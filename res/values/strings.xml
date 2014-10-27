@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">OrderOnline-C</string>
+    <string name="cd_img">image</string>
+    <string name="text_dummytext">Dummy text</string>
+    <string name="error">Error</string>
+    <string name="info">Info</string>
+    <string name="success">Success</string>
+    <string name="OK">OK</string>
+    
+    <!-- Title Specific Strings -->
+    <string name="title_signin">Sign In</string>
+    <string name="text_title_register">Register</string>
+    <string name="text_title_post_offer">Post Offer</string>
+    <string name="text_title_forgot_pwd">Forgot Password</string>
+    <string name="text_title_reset_pwd">Reset Password</string>
+    <string name="text_title_menu">Menu</string>
+    <string name="text_title_profile">Profile</string>
+    <string name="title_order">Order</string>
+    
+    <!-- Watermark Specific Strings -->
+    <string name="text_watermark_name"><i>name*</i></string>
+    <string name="text_watermark_email"><i>email*</i></string>
+    <string name="text_watermark_password"><i>password*</i></string>
+    <string name="text_watermark_phonenumber"><i>phonenumber*</i></string>
+    <string name="text_watermark_storename"><i>store name*</i></string>
+    <string name="text_watermark_storeaddress"><i>address*</i></string>
+    <string name="text_watermark_storecity"><i>city*</i></string>
+    <string name="text_watermark_storestate"><i>state*</i></string>
+    <string name="text_watermark_storecountry"><i>country*</i></string>
+    <string name="text_watermark_regphonenumber"><i>registered phonenumber*</i></string>
+    <string name="text_watermark_otpcode"><i>OTP code*</i></string>
+    <string name="text_watermark_newpassword"><i>new password*</i></string>
+    <string name="text_watermark_confirmpassword"><i>confirm password*</i></string>
+    
+    <!-- Action Button Specific Strings -->
+    <string name="text_button_signin">Sign In</string>
+    <string name="text_button_submit">Submit</string>
+    
+    <!-- Splash Specific Strings -->
+    <string name="text_splash_version">Version 1.0.0</string>
+    
+    <!-- Login Specific Strings -->
+    <string name="text_login_rememberme">Remember me</string>
+    <string name="text_login_forgotpwd">Forgot Password</string>
+    <string name="text_login_register">New user? Register here</string>
+    <string name="text_login_empty_credentials">Please enter valid credentials and try again.</string>
+    <string name="text_login_forgotpwd_details">We will send you a text message with a code to help you reset your password.</string>
+    <string name="text_forgotpwd_fill_text">Please enter your registered phone number.</string>
+    
+    <!-- Signup Specific Strings -->
+    <string name="text_signup_restaurantdetails">Restaurant Details</string>
+    <string name="text_signup_addbrands"><u>ADD BRANDS</u></string>
+    <string name="text_signup_addcategories"><u>ADD CATEGORIES</u></string>
+    <string name="text_signup_storecontactdetails">Contact Details</string>
+    
+    <!-- Store Details Specific Strings -->
+    <string name="text_storedetails_username">Name</string>
+    <string name="text_storedetails_useremail">Email</string>
+    <string name="text_storedetails_usercontact">Contact</string>
+    
+    <!-- Menu Items Specific Strings -->
+    <string name="text_menuitems_nocategoriesadded">No categories added.</string>
+    <string name="text_menuitems_addcategory">ADD CATEGORY</string>
+    <string name="text_menuitems_additem">ADD ITEM</string>
+    
+    <!-- Home Specific Strings -->
+    <string-array name="home_tabs_array">
+        <item>Recent</item>
+        <item>Accepted</item>
+        <item>Dispatched</item>
+        <item>Declined</item>
+    </string-array>
+    <string name="text_home_profile_menu">Profile</string>
+    <string name="text_home_main_menu">Menu</string>
+    
+    <!-- Profile Specific Strings -->
+    <string-array name="profile_tabs_array">
+        <item>Details</item>
+        <item>Reviews</item>
+    </string-array>
+    <string name="text_profile_edit_menu">Edit</string>
+    
+    <!-- Add Brands Specific Strings -->
+    <string name="text_addbrand_add">Add</string>
+    <string name="text_addbrand_done">Done</string>
+	<string name="text_addbrand_cancel">Cancel</string>
+	<string name="text_addbrand_brands">Brands</string>
+	
+	<!-- Add Categories Specific Strings -->
+	<string name="text_addcategories_done">Done</string>
+    <string name="text_addcategories_add">Add</string>
+	<string name="text_addcategories_cancel">Cancel</string>
+	<string name="text_addcategories_category">Categories</string>
+	
+	<!-- Post Offer Specific Strings -->
+	<string name="text_postoffer_post">Post</string>
+	<string name="text_postoffer_upload_image">tap to upload image</string>
+	<string name="text_postoffer_offer_description"><i>description*</i></string>
+	<string name="text_postoffer_start_date"><i>start date*</i></string>
+	<string name="text_postoffer_end_date"><i>end date*</i></string>
+	<string name="text_postoffer_discount"><i>discount*</i></string>
+	<string name="text_postoffer_addbrands"><u>ADD BRANDS</u></string>
+    <string name="text_postoffer_addcategories"><u>ADD CATEGORIES</u></string>
+    
+    <string name="error_no_network_connection">Please check your network services.</string>
+
+</resources>

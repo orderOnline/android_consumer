@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="items_horizontal_margin">8dp</dimen>
+    <dimen name="items_vertical_margin">8dp</dimen>
+    <dimen name="items_vertical_padding">8dp</dimen>
+    <dimen name="items_horizontal_padding">8dp</dimen>
+    <dimen name="items_drawabletext_padding">8dp</dimen>
+    <dimen name="text_border_vertical_padding">4dp</dimen>
+    <dimen name="text_border_horizontal_padding">4dp</dimen>
+    <dimen name="details_text_font_size">12sp</dimen>
+    <dimen name="offers_text_font_size">12sp</dimen>
+    <dimen name="brandstore_text_font_size">12sp</dimen>
+    
+    
+    <dimen name="edit_textbox_font_size">14sp</dimen>
+    <dimen name="button_font_size">14sp</dimen>
+    <dimen name="h1_heading_font_size">14sp</dimen>
+    <dimen name="h2_heading_font_size">12sp</dimen>
+    <dimen name="h3_heading_font_size">12sp</dimen>
+    <dimen name="listview_footer_items_font_size">12sp</dimen>
+    <dimen name="offerdetail_heading_font_size">12sp</dimen>
+    <dimen name="h3_drawable_text_padding">4dp</dimen>
+    <dimen name="reviews_h1_font_size">12sp</dimen>
+    <dimen name="reviews_h2_font_size">12sp</dimen>
+    
+</resources>
