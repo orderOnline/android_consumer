@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/edittext_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_action_room"
+        android:drawableRight="@drawable/ic_action_room"
+        android:ems="10"
+        android:hint="@string/text_watermark_mylocation"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/edittext_lookingfor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/ic_action_search"
+        android:drawableEnd="@drawable/ic_action_search"
+        android:ems="10"
+        android:hint="@string/text_watermark_lookingfor"
+        android:inputType="text" />
+    
+    <TextView
+            android:id="@+id/btn_register"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:text="@string/action_button_search" />
+
+</LinearLayout>

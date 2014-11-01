@@ -3,13 +3,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -181,5 +181,23 @@
 		<item name="android:typeface">sans</item>
 		<item name="android:textSize">@dimen/reviews_h2_font_size</item>
 		<item name="android:drawablePadding">@dimen/h3_drawable_text_padding</item>
+	</style>
+	
+    <!-- Final Styles Used -->
+    <style name="ButtonStyle">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginLeft">@dimen/items_button_horizontal_margin</item>
+		<item name="android:layout_marginRight">@dimen/items_button_horizontal_margin</item>
+		<item name="android:layout_marginTop">@dimen/items_button_vertical_margin</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+		<item name="android:paddingLeft">@dimen/items_button_horizontal_padding</item>
+		<item name="android:paddingRight">@dimen/items_button_horizontal_padding</item>
+		<item name="android:paddingTop">@dimen/items_button_vertical_padding</item>
+		<item name="android:paddingBottom">@dimen/items_button_vertical_padding</item>
+		<item name="android:textColor">@drawable/button_text_custom</item>
+		<item name="android:typeface">sans</item>
+		<item name="android:textSize">@dimen/button_font_size</item>
+		<item name="android:background">@drawable/button_custom</item>
 	</style>
 </resources>

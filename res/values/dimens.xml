@@ -27,4 +27,11 @@
     <dimen name="reviews_h1_font_size">12sp</dimen>
     <dimen name="reviews_h2_font_size">12sp</dimen>
     
+    <!-- Final Dimens Used -->
+    
+    <dimen name="items_button_horizontal_margin">8dp</dimen>
+    <dimen name="items_button_vertical_margin">8dp</dimen>
+    <dimen name="items_button_vertical_padding">8dp</dimen>
+    <dimen name="items_button_horizontal_padding">8dp</dimen>
+    
 </resources>

@@ -1,6 +1,4 @@
 <resources>
-
-   <color name="background_color">#FFFFFF</color>
     <color name="heading_text_color">#000000</color>
     <color name="hint_text_color">#BBFFFF</color>
     <color name="blue_background_color">#0095CD</color>
@@ -46,5 +44,9 @@
     <color name="reviewsh2_textview">#6E6E6E</color>
     
     <color name="footer_action_background_color">#990095CD</color>
+    
+    
+    <!-- Final Colors Used -->
+    <color name="background_color">#FFFFFF</color>
 
 </resources>
