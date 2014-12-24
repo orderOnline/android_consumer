@@ -1,8 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+        <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/defaultimage" >
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textview_restaurantname"
+            style="@style/H1TextViewStyle"
+            android:text="@string/text_dummytext" />
+
+    	</FrameLayout>
+        <TextView
+            android:id="@+id/textview_order_details"
+            style="@style/H1TextViewStyle"
+            android:text="@string/text_orderdetails" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/items_horizontal_margin"
+            android:layout_marginRight="@dimen/items_horizontal_margin"
+            android:background="#d8d9d8" />
+
+        <LinearLayout
+            android:id="@id/layout_neworder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/items_vertical_margin"
+            android:layout_marginTop="@dimen/items_vertical_margin" >
+
+            <TextView
+                android:id="@+id/textview_bill_amount"
+                style="@style/H1TextViewStyle"
+                android:layout_weight="1"
+                android:text="@string/text_bill_amount" />
+
+            <TextView
+                android:id="@+id/textview_bill_amount_value"
+                style="@style/H1TextViewStyle"
+                android:layout_weight="1"
+                android:gravity="right|center_vertical"
+                android:text="200.00"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/btn_place_order"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:text="@string/action_place_order" />
+
+    </LinearLayout>
+
+</ScrollView>

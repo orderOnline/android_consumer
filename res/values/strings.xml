@@ -14,8 +14,13 @@
     
     <!-- Action Button Specific Strings -->
     <string name="action_button_search">Search</string>
+    <string name="action_place_order">Place Order</string>
     
     <!-- Splash Specific Strings -->
     <string name="text_splash_version">Version</string>
+    
+    <string name="text_orderdetails">Order Details</string>
+    <string name="text_bill_amount"><b>Bill Amount</b></string>
+    
 
 </resources>

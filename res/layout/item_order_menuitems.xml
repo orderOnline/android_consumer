@@ -3,10 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     
-    <TextView
-        android:id="@+id/textview_menuitemname"
-        style="@style/commonDetailsh1TextViewStyle"
+    <EditText
+        android:id="@+id/edittext_item_qty"
+        style="@style/H1EditTextStyle"
         android:layout_width="wrap_content"
-        android:text="@string/text_dummytext" />
+        android:inputType="text" >
+    </EditText>
+    
+    <TextView
+            android:id="@+id/textview_item_name"
+            style="@style/H1TextViewValueStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/text_dummytext" />
+    
+    <TextView
+            android:id="@+id/textview_item_price"
+            style="@style/H1TextViewValueStyle"
+            android:text="@string/text_dummytext" />
 
 </LinearLayout>

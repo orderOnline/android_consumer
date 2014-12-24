@@ -1,4 +1,5 @@
 <resources>
+       <color name="background_color">#FFFFFF</color>
     <color name="heading_text_color">#000000</color>
     <color name="hint_text_color">#BBFFFF</color>
     <color name="blue_background_color">#0095CD</color>
@@ -27,9 +28,8 @@
     
     <!-- Color used for H1 TextView -->
     <color name="h1_textview">#dd4b39</color>
-    <color name="h2_textview">#000000</color>
+    <color name="h2_textview">#6E6E6E</color>
     <color name="h3_textview">#6E6E6E</color>
-    <color name="h1_textview_value">#000000</color>
     
     <!-- Color used for Action button -->
     <color name="action_button_text">#FFFFFF</color>
@@ -45,8 +45,24 @@
     
     <color name="footer_action_background_color">#990095CD</color>
     
+    <color name="spinner_textview">#6E6E6E</color>
     
-    <!-- Final Colors Used -->
-    <color name="background_color">#FFFFFF</color>
-
+    <!-- Final Colors -->
+    <color name="h1_edittext_color">#000000</color>
+    <color name="h2_edittext_color">#000000</color>
+    
+    <!-- Color used for Custom Alphabet -->
+    <!-- <color name="alphabet_normal_text">#6E6E6E</color> -->
+    <color name="alphabet_normal_text">#FFFFFF</color>
+    <color name="alphabet_pressed_text">#dd4b39</color>
+    <!-- <color name="alphabet_normal_background">#FFFFFF</color> -->
+    <color name="alphabet_normal_background">#6E6E6E</color>
+    <!-- <color name="alphabet_pressed_background">#FFFFFF</color> -->
+    <color name="alphabet_pressed_background">#dd4b39</color>
+    <color name="alphabet_normal_border">#7F7F7F</color>
+    <color name="alphabet_pressed_border">#dd4b39</color>
+    
+    <color name="radiobutton_text">#6E6E6E</color>
+    
+    <color name="h1_textview_value">#7E7E7E</color>
 </resources>
