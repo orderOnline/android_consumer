@@ -7,15 +7,20 @@
         android:id="@+id/edittext_item_qty"
         style="@style/H1EditTextStyle"
         android:layout_width="wrap_content"
-        android:inputType="text" >
+        android:gravity="center_vertical|center_horizontal"
+        android:inputType="text"
+        android:minEms="2"
+        android:textColor="@color/h1_textview_value" >
+
     </EditText>
     
     <TextView
-            android:id="@+id/textview_item_name"
-            style="@style/H1TextViewValueStyle"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/text_dummytext" />
+        android:id="@+id/textview_item_name"
+        style="@style/H1TextViewValueStyle"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="start"
+        android:text="@string/text_dummytext" />
     
     <TextView
             android:id="@+id/textview_item_price"

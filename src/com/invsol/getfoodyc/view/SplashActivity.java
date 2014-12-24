@@ -15,7 +15,7 @@ import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.getfoodyc.R;
+import com.invsol.getfoodyc.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;

@@ -33,10 +33,13 @@
             android:background="#d8d9d8" />
 
         <LinearLayout
-            android:id="@id/layout_neworder"
+            android:id="@+id/layout_orderdetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/items_horizontal_margin"
+            android:layout_marginRight="@dimen/items_horizontal_margin"
             android:orientation="vertical" >
+
         </LinearLayout>
 
         <LinearLayout

@@ -7,6 +7,7 @@
     
     <!-- Title Specific Strings -->
     <string name="title_signin">Sign In</string>
+    <string name="title_checkout">Checkout</string>
     
     <!-- Watermark Specific Strings -->
     <string name="text_watermark_mylocation"><i>my location</i></string>

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.getfoodyc"
+    package="com.invsol.getfoodyc"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -35,7 +35,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.OrderActivity"
-            android:label="@string/title_signin"></activity>
+            android:label="@string/title_checkout"></activity>
     </application>
 
 </manifest>

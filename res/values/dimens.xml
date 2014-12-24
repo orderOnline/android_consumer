@@ -16,10 +16,7 @@
     <dimen name="brandstore_text_font_size">12sp</dimen>
     
     
-    <dimen name="edit_textbox_font_size">14sp</dimen>
     <dimen name="button_font_size">14sp</dimen>
-    <dimen name="h1_heading_font_size">14sp</dimen>
-    <dimen name="h2_heading_font_size">12sp</dimen>
     <dimen name="h3_heading_font_size">12sp</dimen>
     <dimen name="listview_footer_items_font_size">12sp</dimen>
     <dimen name="offerdetail_heading_font_size">12sp</dimen>
@@ -27,11 +24,36 @@
     <dimen name="reviews_h1_font_size">12sp</dimen>
     <dimen name="reviews_h2_font_size">12sp</dimen>
     
-    <!-- Final Dimens Used -->
+    <!-- Final Dimensions -->
+    <dimen name="spinner_font_size">12sp</dimen>
+    <dimen name="spinner_horizontal_margin">12dp</dimen>
+    <dimen name="spinner_vertical_margin">12dp</dimen>
+    
+    <dimen name="h1_heading_font_size">14sp</dimen>
+    <dimen name="h2_heading_font_size">14sp</dimen>
+    
+    <dimen name="edit_textbox_font_size">14sp</dimen>
+    
+    <dimen name="items_h2horizontal_margin">14dp</dimen>
+    <dimen name="items_h2vertical_margin">14dp</dimen>
+    <dimen name="items_h2vertical_padding">12dp</dimen>
+    <dimen name="items_h2horizontal_padding">12dp</dimen>
+    
+    <dimen name="items_h2textview_horizontal_margin">24dp</dimen>
+    <dimen name="items_h2textview_vertical_margin">24dp</dimen>
     
     <dimen name="items_button_horizontal_margin">8dp</dimen>
     <dimen name="items_button_vertical_margin">8dp</dimen>
     <dimen name="items_button_vertical_padding">8dp</dimen>
     <dimen name="items_button_horizontal_padding">8dp</dimen>
+    
+    <dimen name="checkbox_horizontal_margin">8dp</dimen>
+    <dimen name="checkbox_vertical_margin">14dp</dimen>
+    
+    <dimen name="alphabet_horizontal_margin">4dp</dimen>
+    <dimen name="alphabet_vertical_margin">4dp</dimen>
+    <dimen name="alphabet_vertical_padding">10dp</dimen>
+    
+    <dimen name="radiobutton_font_size">12sp</dimen>
     
 </resources>
