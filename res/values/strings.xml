@@ -12,6 +12,8 @@
     <!-- Watermark Specific Strings -->
     <string name="text_watermark_mylocation"><i>my location</i></string>
     <string name="text_watermark_lookingfor"><i>looking for</i></string>
+    <string name="text_watermark_address"><i>address</i></string>
+    <string name="text_watermark_instructions"><i>instructions</i></string>
     
     <!-- Action Button Specific Strings -->
     <string name="action_button_search">Search</string>
@@ -22,6 +24,7 @@
     
     <string name="text_orderdetails">Order Details</string>
     <string name="text_bill_amount"><b>Bill Amount</b></string>
-    
+    <string name="text_same_as_accountaddress"><b>Same as account address.</b></string>
+    <string name="text_orderaddress">Address</string>
 
 </resources>

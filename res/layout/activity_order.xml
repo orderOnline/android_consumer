@@ -65,6 +65,53 @@
 
         </LinearLayout>
         
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/items_horizontal_margin"
+            android:layout_marginRight="@dimen/items_horizontal_margin"
+            android:background="#d8d9d8" />
+
+        <CheckBox
+            android:id="@+id/checkbox_address"
+            style="@style/CheckboxStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_same_as_accountaddress" />
+        
+        <EditText
+            android:id="@+id/edittext_address"
+            style="@style/H1EditTextStyle"
+            android:drawableRight="@drawable/ic_address"
+            android:drawableEnd="@drawable/ic_address"
+            android:hint="@string/text_watermark_address"
+            android:inputType="textPostalAddress">
+        </EditText>
+        
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/items_horizontal_margin"
+            android:layout_marginRight="@dimen/items_horizontal_margin"
+            android:background="#d8d9d8" />
+        
+        <EditText
+            android:id="@+id/edittext_instructions"
+            style="@style/H1EditTextStyle"
+            android:drawableEnd="@drawable/ic_instructions"
+            android:drawableRight="@drawable/ic_instructions"
+            android:hint="@string/text_watermark_instructions"
+            android:inputType="textLongMessage" >
+
+        </EditText>
+        
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_marginLeft="@dimen/items_horizontal_margin"
+            android:layout_marginRight="@dimen/items_horizontal_margin"
+            android:background="#d8d9d8" />
+        
         <TextView
             android:id="@+id/btn_place_order"
             style="@style/ButtonStyle"

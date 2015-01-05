@@ -45,5 +45,7 @@ public class OrderActivity extends ActionBarActivity {
 		
 		TextView item_billamount = (TextView)findViewById(R.id.textview_bill_amount_value);
 		item_billamount.setText("INR 650");
+		
+		
 	}
 }
