@@ -36,6 +36,18 @@
         </activity>
         <activity android:name=".view.OrderActivity"
             android:label="@string/title_checkout"></activity>
+        
+        <receiver
+            android:name=".gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.invsol.getfoodyc" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

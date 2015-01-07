@@ -44,6 +44,9 @@ public class Constants {
 		public static final String JSON_QUANTITY = "quantity";
 		public static final String JSON_INSTRUCTIONS = "instructions";
 		public static final String JSON_ADDRESS = "address";
+		public static final String JSON_ORDER_STATUS = "orderstatus";
+		public static final String JSON_ORDER_MESSAGE = "ordermessage";
+		public static final String JSON_ORDER_STATEMENT = "orderstatement";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";
