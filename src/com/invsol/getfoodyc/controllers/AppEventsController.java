@@ -75,7 +75,17 @@ public class AppEventsController {
 	 * Method to actually handle events
 	 */
 	private void fireEvents(int eventId, Bundle eventData, View view) {
-
+		switch(eventId){
+		case NetworkEvents.EVENT_ID_PLACEORDER:{
+			try {
+				modelFacade.getRemoteModel().placeOrder(eventData,
+						NetworkResponseHandler.PLACEORDER_HANDLER, view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
+		}
+		break;
+		}
 	}
 
 	// ---------------------------------------------------------------------------------

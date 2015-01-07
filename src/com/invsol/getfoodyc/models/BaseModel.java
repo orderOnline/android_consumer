@@ -2,6 +2,8 @@ package com.invsol.getfoodyc.models;
 
 import java.util.Vector;
 
+import android.os.Bundle;
+
 import com.invsol.getfoodyc.listeners.ActivityUpdateListener;
 
 public class BaseModel {
@@ -52,12 +54,12 @@ public class BaseModel {
 	/**
 	 * Notify view which should be updated.
 	 */
-	public void notifyView(String tag) {
+	public void notifyView(int tag, Bundle data) {
 		int viewsCount = registeredView.size();
 		ActivityUpdateListener view = null;
 		for (int i = 0; i < viewsCount; i++) {
 			view = (ActivityUpdateListener) registeredView.elementAt(i);
-			view.updateActivity(tag);
+			view.updateActivity(tag, data);
 		}
 	}
 	// --------------------------------------------------------------------------------------------
