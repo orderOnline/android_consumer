@@ -4,25 +4,20 @@ import java.util.ArrayList;
 
 public class ChatItem {
 
-	private int order_id, owner_id;
+	private int order_id;
 	private ArrayList<ChatMessage> messages;
 	
-	public ChatItem(int orderid, int ownerid){
+	public ChatItem(int orderid){
 		this.order_id = orderid;
-		this.owner_id = orderid;
 		messages = new ArrayList<ChatMessage>();
 	}
 
 	public int getOrder_id() {
 		return order_id;
 	}
-
-	public int getOwner_id() {
-		return owner_id;
-	}
 	
-	public void addChatMessage( String message, String owner_type ){
-		ChatMessage newMsg = new ChatMessage(message, owner_type);
+	public void addChatMessage( int owner_id, String owner_name, String message, String owner_type ){
+		ChatMessage newMsg = new ChatMessage(owner_id, owner_name, message, owner_type);
 		messages.add(newMsg);
 	}
 

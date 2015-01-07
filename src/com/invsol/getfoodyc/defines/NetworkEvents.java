@@ -7,4 +7,5 @@ public class NetworkEvents {
 	 */
 	public static final int EVENT_ID_REGISTER = 0;
 	public static final int EVENT_ID_PLACEORDER = 1;
+	public static final int EVENT_ID_CHAT = 2;
 }

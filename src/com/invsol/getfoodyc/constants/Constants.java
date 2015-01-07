@@ -7,6 +7,7 @@ public class Constants {
 		public static final String URL_POST_AUTHORIZE_REQUEST = "authorize/consumer.json";
 		public static final String URL_POST_AUTHENTICATE_REQUEST = "authenticate/consumer.json";
 		public static final String URL_POST_NEW_ORDER = "orders/new.json";
+		public static final String URL_POST_CHAT = "orders/new.json";
 		// ----------------------------------------------------------------------------------
 		
 		/**
@@ -49,8 +50,10 @@ public class Constants {
 		public static final String JSON_ORDER_STATEMENT = "orderstatement";
 		public static final String JSON_CHAT_ORDER_ID = "order_id";
 		public static final String JSON_CHAT_OWNER_ID = "owner_id";
+		public static final String JSON_CHAT_OWNER_NAME = "owner_name";
 		public static final String JSON_CHAT_MESSAGE = "message";
 		public static final String JSON_CHAT_OWNER_TYPE = "owner_type";
+		public static final String JSON_CHAT_JSON = "chatjson";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";

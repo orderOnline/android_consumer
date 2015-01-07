@@ -14,6 +14,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import android.support.v4.content.WakefulBroadcastReceiver;
@@ -23,6 +24,9 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.invsol.getfoodyc.GetFoodyCustomerApplication;
 import com.invsol.getfoodyc.R;
 import com.invsol.getfoodyc.constants.Constants;
+import com.invsol.getfoodyc.controllers.AppEventsController;
+import com.invsol.getfoodyc.defines.ResponseTags;
+import com.invsol.getfoodyc.models.ConnectionModel;
 import com.invsol.getfoodyc.view.ChatActivity;
 import com.invsol.getfoodyc.view.OrderActivity;
 
@@ -38,7 +42,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 	
 	private static final String TAG = "GcmBroadcastReceiver";
 	private Context ctx;
-	private String gcmMessage;
+	private String gcmMessage, chatMessage;
 	private Notification.InboxStyle inboxStyle;
 
     @Override
@@ -117,6 +121,48 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 						} catch (JSONException e) {					
 							e.printStackTrace();
 						}
+					}else if(string.equals("CHAT")){
+						chatMessage = intent.getExtras().getString(string);
+						Log.i(TAG, "Received: " + chatMessage);
+		            	 try {
+		            		 JSONObject json = new JSONObject(chatMessage);
+		            		 //AppEventsController.getInstance().getModelFacade().getChatModel().addOrderChat(json);
+		            		 //Code to check whether the app is in foreground or not
+		            		 if(GetFoodyCustomerApplication.isActivityVisible()){
+		            			 final Activity currentActivity = GetFoodyCustomerApplication.getCurrentActivity();
+		            			 ConnectionModel model = AppEventsController.getInstance()
+		         						.getModelFacade().getConnModel();
+		            			 if( currentActivity instanceof ChatActivity ){
+		            				model.setConnectionStatus(ConnectionModel.SUCCESS);
+		            				Bundle chatJson = new Bundle();
+		            				chatJson.putString(Constants.JSON_CHAT_JSON, json.toString());
+		 							model.notifyView(ResponseTags.TAG_CHAT, chatJson);
+		            			 }else{
+		            				 AlertDialog.Builder builder = new AlertDialog.Builder(
+			            					 currentActivity);
+		            				builder.setTitle(currentActivity.getResources().getString(R.string.info));
+		            				builder.setMessage(currentActivity.getResources().getString(R.string.text_newchat_notification) + json.getString(Constants.JSON_CHAT_OWNER_NAME));
+		            				builder.setPositiveButton(currentActivity.getResources().getString(R.string.OK),
+		            						new DialogInterface.OnClickListener() {
+
+		            							@Override
+		            							public void onClick(DialogInterface dialog, int which) {
+		            								dialog.cancel();
+		            								Intent screenChangeIntent = null;
+		            								screenChangeIntent = new Intent(ctx,
+		            										ChatActivity.class);
+		            								ctx.startActivity(screenChangeIntent);
+		            							}
+		            						});
+		            				AlertDialog alertDialog = builder.create();
+		            				alertDialog.show();
+		            			 }
+		            		 }else if(!GetFoodyCustomerApplication.isActivityVisible()){
+			            		 sendChatNotification( json.getString(Constants.JSON_CHAT_MESSAGE), true);
+		            		 }
+						} catch (JSONException e) {					
+							e.printStackTrace();
+						}
 					}
             	}
             }
@@ -154,4 +200,30 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
         }
     }
 	
+    private void sendChatNotification( String text, boolean launchApp ){
+    	int icon = R.drawable.ic_launcher;
+        NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
+        Intent notificationIntent = new Intent(ctx, ChatActivity.class);
+        notificationIntent.putExtra("CHAT", chatMessage);
+		  PendingIntent intent = PendingIntent.getActivity(ctx, 0,
+				    notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+		  Notification notification = new Notification.Builder(ctx)
+			 .setContentIntent(intent)
+			 .setContentTitle("Message")
+			 .setContentText(text)
+	         .setSmallIcon(icon)
+	         .build();
+         
+        if (launchApp) {
+        	notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+        		    | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        		  notification.defaults |= Notification.DEFAULT_SOUND;
+        		  // Vibrate if vibrate is enabled
+        	      notification.defaults |= Notification.DEFAULT_VIBRATE;
+        		  notification.flags |= Notification.FLAG_INSISTENT;
+        		  notification.flags |= Notification.FLAG_AUTO_CANCEL;
+        		  notification.flags |= Notification.FLAG_NO_CLEAR;
+        		  mNotificationManager.notify(1, notification);
+        }
+    }
 }

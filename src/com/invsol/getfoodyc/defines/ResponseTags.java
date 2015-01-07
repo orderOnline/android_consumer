@@ -4,4 +4,5 @@ public class ResponseTags {
 
 	public static final int TAG_NEWORDER = 0;
 	public static final int TAG_ERROR = 1;
+	public static final int TAG_CHAT = 2;
 }

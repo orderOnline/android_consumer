@@ -55,4 +55,8 @@ public class ChatAdapter extends ArrayAdapter<ChatMessage>{
 	static class ViewHolder {
 		private TextView dataCell_chatmsg;
 	}
+
+	public ArrayList<ChatMessage> getChatItems() {
+		return chatItems;
+	}
 }
