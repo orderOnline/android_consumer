@@ -14,10 +14,13 @@
     <string name="text_watermark_lookingfor"><i>looking for</i></string>
     <string name="text_watermark_address"><i>address</i></string>
     <string name="text_watermark_instructions"><i>instructions</i></string>
+    <string name="text_watermark_write_here"><i>write here*</i></string>
     
     <!-- Action Button Specific Strings -->
     <string name="action_button_search">Search</string>
     <string name="action_place_order">Place Order</string>
+    <string name="action_button_send">Send</string>
+    <string name="action_button_chat">Chat</string>
     
     <!-- Splash Specific Strings -->
     <string name="text_splash_version">Version</string>

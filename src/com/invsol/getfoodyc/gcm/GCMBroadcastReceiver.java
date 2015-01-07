@@ -23,6 +23,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.invsol.getfoodyc.GetFoodyCustomerApplication;
 import com.invsol.getfoodyc.R;
 import com.invsol.getfoodyc.constants.Constants;
+import com.invsol.getfoodyc.view.ChatActivity;
 import com.invsol.getfoodyc.view.OrderActivity;
 
 /**
@@ -77,6 +78,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            					 currentActivity);
 		            				builder.setTitle(currentActivity.getResources().getString(R.string.info));
 		            				builder.setMessage(json.getString(Constants.JSON_ORDER_STATEMENT));
+		            				builder.setCancelable(false);
 		            				builder.setPositiveButton(currentActivity.getResources().getString(R.string.OK),
 		            						new DialogInterface.OnClickListener() {
 
@@ -85,6 +87,18 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            								dialog.cancel();
 		            							}
 		            						});
+		            				builder.setNegativeButton(currentActivity.getResources().getString(R.string.action_button_chat),
+		            						new DialogInterface.OnClickListener() {
+
+            							@Override
+            							public void onClick(DialogInterface dialog, int which) {
+            								dialog.cancel();
+            								Intent screenChangeIntent = null;
+            								screenChangeIntent = new Intent(ctx,
+            										ChatActivity.class);
+            								ctx.startActivity(screenChangeIntent);
+            							}
+            						});
 		            				AlertDialog alertDialog = builder.create();
 		            				alertDialog.show();
 		            		 }else if(!GetFoodyCustomerApplication.isActivityVisible()){

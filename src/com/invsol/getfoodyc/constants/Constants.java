@@ -47,6 +47,10 @@ public class Constants {
 		public static final String JSON_ORDER_STATUS = "orderstatus";
 		public static final String JSON_ORDER_MESSAGE = "ordermessage";
 		public static final String JSON_ORDER_STATEMENT = "orderstatement";
+		public static final String JSON_CHAT_ORDER_ID = "order_id";
+		public static final String JSON_CHAT_OWNER_ID = "owner_id";
+		public static final String JSON_CHAT_MESSAGE = "message";
+		public static final String JSON_CHAT_OWNER_TYPE = "owner_type";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";
