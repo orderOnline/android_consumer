@@ -34,6 +34,7 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 	private EditText editText_instructions, edtTxtAddress;
 	private CheckBox chkBoxAddress;
 	private ConnectionModel connModel;
+	private boolean isAddressChecked;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +77,12 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		
 		chkBoxAddress = (CheckBox)findViewById(R.id.checkbox_address);
 		edtTxtAddress = (EditText)findViewById(R.id.edittext_address);
-		
+		isAddressChecked = chkBoxAddress.isChecked();
 		chkBoxAddress.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				isAddressChecked = isChecked;
 				if(!isChecked){
 					edtTxtAddress.setVisibility(View.VISIBLE);
 				}else{
@@ -103,6 +105,10 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 					postData.put(Constants.JSON_RESTAURANT_ID, 3);
 					postData.put(Constants.JSON_CONSUMER_ID, 0);
 					postData.put(Constants.JSON_INSTRUCTIONS, editText_instructions.getText());
+					if( isAddressChecked )
+						postData.put(Constants.JSON_ADDRESS, "Flat-501, Sector-22, Dwarka");
+					else
+						postData.put(Constants.JSON_ADDRESS, edtTxtAddress.getText());
 					Long tsLong = System.currentTimeMillis()/1000;
 					postData.put(Constants.JSON_TIMESTAMP, tsLong);
 					JSONArray orderItemsArray = new JSONArray();
@@ -157,7 +163,7 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		case ResponseTags.TAG_NEWORDER:{
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(getResources().getString(R.string.info));
-			builder.setMessage(data.getString(Constants.KEY_ORDER_CONFIRMATION));
+			builder.setMessage(getResources().getString(R.string.text_order_confirmation));
 			builder.setPositiveButton(getResources().getString(R.string.OK),
 					new DialogInterface.OnClickListener() {
 
