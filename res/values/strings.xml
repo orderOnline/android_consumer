@@ -15,12 +15,20 @@
     <string name="text_watermark_address"><i>address</i></string>
     <string name="text_watermark_instructions"><i>instructions</i></string>
     <string name="text_watermark_write_here"><i>write here*</i></string>
+    <string name="text_watermark_phonenumber"><i>phonenumber*</i></string>
+    <string name="text_watermark_password"><i>password*</i></string>
+    <string name="text_watermark_otpcode"><i>OTP code*</i></string>
     
     <!-- Action Button Specific Strings -->
     <string name="action_button_search">Search</string>
     <string name="action_place_order">Place Order</string>
     <string name="action_button_send">Send</string>
     <string name="action_button_chat">Chat</string>
+    <string name="text_button_signin">Sign In</string>
+    <string name="text_button_forgotpwd">Forgot Password</string>
+    <string name="text_button_register">New user? Register here</string>
+    <string name="text_button_submit">Submit</string>
+    <string name="text_button_validate">Validate</string>
     
     <!-- Splash Specific Strings -->
     <string name="text_splash_version">Version</string>
@@ -34,6 +42,13 @@
     
     <!-- Chat Specific Strings -->
     <string name="text_newchat_notification">You have a new message from :</string>
+    
+    <!-- Login Specific Strings -->
+    <string name="text_login_rememberme">Remember me</string>
+    <string name="text_login_empty_credentials">Please enter valid credentials and try again.</string>
+    
+    <!-- Signup Specific Strings -->
+    <string name="text_signup_validateotp_details">Please enter the OTP sent to your mobile number.</string>
     
     <string name="error_no_network_connection">Please check your network services.</string>
     <string name="error">Error</string>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/edittext_contactno"
+            style="@style/H1EditTextStyle"
+            android:drawableRight="@drawable/ic_device_access_call"
+            android:hint="@string/text_watermark_phonenumber"
+            android:inputType="phone"
+            android:maxLength="10" >
+        </EditText>
+
+        <EditText
+            android:id="@+id/edittext_password"
+            style="@style/H1EditTextStyle"
+            android:drawableRight="@drawable/ic_device_access_accounts"
+            android:ems="10"
+            android:hint="@string/text_watermark_password"
+            android:inputType="textPassword" >
+        </EditText>
+
+        <CheckBox
+            android:id="@+id/layout_neworder"
+            style="@style/H3TextViewStyle"
+            android:text="@string/text_login_rememberme" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/items_vertical_margin"
+            android:layout_marginTop="@dimen/items_vertical_margin" >
+
+            <TextView
+                android:id="@+id/btn_login"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="@string/text_button_signin" />
+
+            <TextView
+                android:id="@+id/btn_forgotpassword"
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:text="@string/text_button_forgotpwd" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btn_register"
+            style="@style/ButtonStyle"
+            android:layout_width="match_parent"
+            android:text="@string/text_button_register" />
+    </LinearLayout>
+
+</ScrollView>
