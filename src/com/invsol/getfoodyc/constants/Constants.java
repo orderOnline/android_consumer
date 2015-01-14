@@ -3,7 +3,8 @@ package com.invsol.getfoodyc.constants;
 public class Constants {
 	
 	// Required URLs
-		public static final String BASE_URL = "http://10.0.2.2:8080/api.invsol.com/";
+		public static final String BASE_URL = "http://192.168.43.241:8080/jax-rs-heroku/";
+		//public static final String BASE_URL = "http://www.medoco.in/";
 		public static final String URL_POST_AUTHORIZE_REQUEST = "authorize/consumer.json";
 		public static final String URL_POST_AUTHENTICATE_REQUEST = "authenticate/consumer.json";
 		public static final String URL_POST_NEW_ORDER = "orders/new.json";
@@ -29,9 +30,10 @@ public class Constants {
 		public static final int EXCEPTION = 2;
 		// ----------------------------------------------------------------------------------
 		public static final String JSON_RESULT = "result";
-		public static final String JSON_TYPE = "result";
+		public static final String JSON_TYPE = "type";
 		public static final String JSON_SUCCESS = "success";
 		public static final String JSON_RESPONSE = "response";
+		public static final String JSON_ERROR_MESSAGE = "errormessage";
 		
 		public static final String JSON_POST_DATA = "jsonpostdata";
 		public static final String JSON_PHONENUMBER = "phonenumber";

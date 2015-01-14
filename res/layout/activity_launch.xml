@@ -3,30 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_color"
+    android:gravity="center_vertical"
     android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/edittext_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_action_room"
-        android:drawableRight="@drawable/ic_action_room"
-        android:ems="10"
-        android:hint="@string/text_watermark_mylocation"
-        android:inputType="text" />
-
+	<LinearLayout 
+	    android:layout_width="match_parent"
+    	android:layout_height="wrap_content">
     <EditText
         android:id="@+id/edittext_lookingfor"
-        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:drawableRight="@drawable/ic_action_search"
         android:drawableEnd="@drawable/ic_action_search"
         android:ems="10"
         android:hint="@string/text_watermark_lookingfor"
         android:inputType="text" />
-    
+
+    <ImageButton
+        android:id="@+id/imagebtn_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/success"
+        android:src="@drawable/ic_action_room" />
+
+    </LinearLayout>
     <TextView
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_search"
             style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:text="@string/action_button_search" />

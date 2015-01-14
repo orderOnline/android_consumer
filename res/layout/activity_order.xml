@@ -83,10 +83,12 @@
         <EditText
             android:id="@+id/edittext_address"
             style="@style/H1EditTextStyle"
-            android:drawableRight="@drawable/ic_address"
             android:drawableEnd="@drawable/ic_address"
+            android:drawableRight="@drawable/ic_address"
             android:hint="@string/text_watermark_address"
-            android:inputType="textPostalAddress">
+            android:inputType="textPostalAddress"
+            android:visibility="gone" >
+
         </EditText>
         
         <View

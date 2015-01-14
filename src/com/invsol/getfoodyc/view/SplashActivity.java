@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.invsol.getfoodyc.constants.Constants;
+import com.invsol.getfoodyc.controllers.AppEventsController;
 import com.invsol.getfoodyc.gcm.GCMAsyncTask;
 
 public class SplashActivity extends FragmentActivity{
@@ -80,22 +82,9 @@ public class SplashActivity extends FragmentActivity{
 			public void run() {
 				Intent screenChangeIntent = null;
 				screenChangeIntent = new Intent(SplashActivity.this,
-						OrderActivity.class);
+						LaunchActivity.class);
 				SplashActivity.this.startActivity(screenChangeIntent);
 				SplashActivity.this.finish();
-				/*if( accessToken.equals(Constants.TEXT_DATABASE_ACCESS_VALUE_DEFAULT) ){
-					Intent screenChangeIntent = null;
-					screenChangeIntent = new Intent(SplashActivity.this,
-							LoginActivity.class);
-					SplashActivity.this.startActivity(screenChangeIntent);
-					SplashActivity.this.finish();
-				}else{
-					Intent screenChangeIntent = null;
-					screenChangeIntent = new Intent(SplashActivity.this,
-							HomeActivity.class);
-					SplashActivity.this.startActivity(screenChangeIntent);
-					SplashActivity.this.finish();
-				}*/
 				
 			}
 		}, SPLASH_TIMER);
@@ -173,12 +162,23 @@ public class SplashActivity extends FragmentActivity{
 	    }
 	}
 	
-	private static Handler gcmResponseHandler() {
+	private void storeGCMRegKey()
+	{
+		final SharedPreferences prefs = getGCMPreferences(context);
+		Editor editor = prefs.edit();
+	    editor.putString(PROPERTY_REG_ID, AppEventsController.getInstance().getModelFacade().getCustomerModel().getGcm_registration_key());
+	    editor.putInt(PROPERTY_APP_VERSION, getAppVersion(SplashActivity.this));
+	    editor.commit();
+	}
+	
+	private Handler gcmResponseHandler() {
 		return new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				switch (msg.what) {
 				case Constants.SUCCESSFUL_RESPONSE: {
+					AppEventsController.getInstance().getModelFacade().getCustomerModel().setGcm_registration_key(msg.obj.toString());
+					storeGCMRegKey();
 				}
 					break;
 				case Constants.EXCEPTION: {

@@ -48,6 +48,10 @@
                 <category android:name="com.invsol.getfoodyc" />
             </intent-filter>
         </receiver>
+        <activity android:name=".view.LaunchActivity"></activity>
+        <activity android:name=".view.SignupActivity"></activity>
+        <activity android:name=".view.ChatActivity"></activity>
+        <activity android:name=".view.LoginActivity"></activity>
     </application>
 
 </manifest>

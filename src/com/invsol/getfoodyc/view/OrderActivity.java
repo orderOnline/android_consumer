@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MotionEvent;
@@ -73,7 +74,7 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		newOrder_layout.addView(secondview);
 		
 		item_billamount = (TextView)findViewById(R.id.textview_bill_amount_value);
-		item_billamount.setText("INR 650");
+		item_billamount.setText("650");
 		
 		chkBoxAddress = (CheckBox)findViewById(R.id.checkbox_address);
 		edtTxtAddress = (EditText)findViewById(R.id.edittext_address);
@@ -114,13 +115,13 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 					JSONArray orderItemsArray = new JSONArray();
 					
 					JSONObject tempItemJson = new JSONObject();
-					tempItemJson.put(Constants.JSON_ITEM_ID, 0);
+					tempItemJson.put(Constants.JSON_ITEM_ID, 18);
 					tempItemJson.put(Constants.JSON_QUANTITY, 1);
 					orderItemsArray.put(tempItemJson);
 					
 					tempItemJson = null;
 					tempItemJson = new JSONObject();
-					tempItemJson.put(Constants.JSON_ITEM_ID, 1);
+					tempItemJson.put(Constants.JSON_ITEM_ID, 20);
 					tempItemJson.put(Constants.JSON_QUANTITY, 5);
 					orderItemsArray.put(tempItemJson);
 					
@@ -164,6 +165,36 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder.setTitle(getResources().getString(R.string.info));
 			builder.setMessage(getResources().getString(R.string.text_order_confirmation));
+			builder.setPositiveButton(getResources().getString(R.string.action_button_chat),
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+							Intent screenChangeIntent = null;
+							screenChangeIntent = new Intent(OrderActivity.this,
+									ChatActivity.class);
+							OrderActivity.this.startActivity(screenChangeIntent);
+							OrderActivity.this.finish();
+						}
+					});
+			builder.setNegativeButton(getResources().getString(R.string.OK),
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+							OrderActivity.this.finish();
+						}
+					});
+			AlertDialog alertDialog = builder.create();
+			alertDialog.show();
+		}
+		break;
+		case ResponseTags.TAG_ERROR:{
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(getResources().getString(R.string.info));
+			builder.setMessage(data.getString(Constants.JSON_ERROR_MESSAGE));
 			builder.setPositiveButton(getResources().getString(R.string.OK),
 					new DialogInterface.OnClickListener() {
 

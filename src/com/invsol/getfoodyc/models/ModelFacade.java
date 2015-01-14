@@ -8,6 +8,7 @@ public class ModelFacade {
 	private RemoteModel remoteModel;
 	private ConnectionModel connModel;
 	private LocalModel localModel;
+	private CustomerModel customerModel;
 	// ---------------------------------------------------------------------------------
 
 	/**
@@ -18,6 +19,7 @@ public class ModelFacade {
 		remoteModel = new RemoteModel();
 		connModel = new ConnectionModel();
 		localModel = new LocalModel();
+		customerModel = new CustomerModel();
 	}
 
 	// ---------------------------------------------------------------------------------
@@ -37,6 +39,10 @@ public class ModelFacade {
 
 	public LocalModel getLocalModel() {
 		return localModel;
+	}
+
+	public CustomerModel getCustomerModel() {
+		return customerModel;
 	}
 
 	

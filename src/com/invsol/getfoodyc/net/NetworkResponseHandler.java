@@ -46,9 +46,11 @@ public class NetworkResponseHandler {
 				case Constants.EXCEPTION: {
 					Exception exceptionObj = (Exception) msg.obj;
 					Log.d(TAG, "exception:" + exceptionObj.getMessage());
+					Bundle dataBundle = new Bundle();
+					dataBundle.putString(Constants.JSON_ERROR_MESSAGE, exceptionObj.getMessage());
 					model.setConnectionStatus(ConnectionModel.ERROR);
 					model.setConnectionErrorMessage(exceptionObj.getMessage());
-					model.notifyView(ResponseTags.TAG_ERROR, null);
+					model.notifyView(ResponseTags.TAG_ERROR, dataBundle);
 				}
 					break;
 				}
