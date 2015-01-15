@@ -10,22 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-        
-        <ImageView
-            android:id="@+id/imageview_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/search_layout"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/ic_launcher"
-            android:contentDescription="@string/OK" />
 
         <LinearLayout
             android:id="@+id/search_layout"
+            android:paddingTop="@dimen/items_vertical_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
             android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageview_icon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/OK"
+                android:src="@drawable/ic_launcher" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +58,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/items_vertical_padding" >
 
             <TextView
                 android:id="@+id/textview_login_options"
@@ -77,6 +76,8 @@
             <TextView
                 android:id="@+id/textview_login_options_facebook"
                 style="@style/H1TextViewStyle"
+                android:drawableEnd="@drawable/ic_facebook"
+                android:drawableRight="@drawable/ic_facebook"
                 android:text="@string/text_launch_facebook" />
 
             <View
@@ -88,6 +89,8 @@
             <TextView
                 android:id="@+id/textview_login_options_gplus"
                 style="@style/H1TextViewStyle"
+                android:drawableEnd="@drawable/ic_googleplus"
+                android:drawableRight="@drawable/ic_googleplus"
                 android:text="@string/text_launch_googleplus" />
 
             <View
@@ -99,6 +102,8 @@
             <TextView
                 android:id="@+id/textview_login_options_phonenumber"
                 style="@style/H1TextViewStyle"
+                android:drawableEnd="@drawable/ic_googleplus"
+                android:drawableRight="@drawable/ic_googleplus"
                 android:text="@string/text_launch_phonenumber" />
 
             <View
@@ -110,9 +115,10 @@
             <TextView
                 android:id="@+id/textview_login_options_register"
                 style="@style/H1TextViewStyle"
+                android:drawableEnd="@drawable/ic_register"
+                android:drawableRight="@drawable/ic_register"
                 android:text="@string/text_launch_register" />
         </LinearLayout>
-
     </RelativeLayout>
 
 </LinearLayout>
