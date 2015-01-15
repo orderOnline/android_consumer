@@ -30,6 +30,13 @@
     <string name="text_button_submit">Submit</string>
     <string name="text_button_validate">Validate</string>
     
+    <!-- Launch Specific Strings -->
+    <string name="text_login"><b>LOG IN</b></string>
+    <string name="text_launch_facebook">Facebook</string>
+    <string name="text_launch_googleplus">Google+</string>
+    <string name="text_launch_phonenumber">Phonenumber</string>
+    <string name="text_launch_register">Register</string>
+    
     <!-- Splash Specific Strings -->
     <string name="text_splash_version">Version</string>
     

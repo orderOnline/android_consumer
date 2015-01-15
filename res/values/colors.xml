@@ -8,6 +8,8 @@
     <color name="light_grey_border_color">#FFFBFF</color>
     <color name="black_color">#000000</color>
     <color name="red_background_color">#dd4b39</color>
+    <color name="straight_redline_color">#dd4b39</color>
+    <color name="straight_greyline_color">#d8d9d8</color>
     
     <color name="signup_hint_color">#778899</color>
     <color name="light_blue_color">#83D2EF</color>
