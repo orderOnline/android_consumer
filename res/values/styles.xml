@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
@@ -34,7 +34,18 @@
     </style>
 
     <style name="ButtonBarButton" />
-    
+	
+    <!-- <style name="commonH1TextViewValueStyle">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginLeft">@dimen/items_horizontal_margin</item>
+		<item name="android:layout_marginRight">@dimen/items_horizontal_margin</item>
+		<item name="android:layout_marginTop">@dimen/items_vertical_margin</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@color/h1_textview_value</item>
+		<item name="android:typeface">sans</item>
+		<item name="android:textSize">@dimen/h1_heading_font_size</item>
+	</style> -->
     <style name="commonActionButtonStyle">
 		<item name="android:layout_width">wrap_content</item>
 		<item name="android:layout_height">wrap_content</item>
@@ -247,5 +258,5 @@
 		<item name="android:typeface">sans</item>
 		<item name="android:textSize">@dimen/h1_heading_font_size</item>
 	</style>
-    
+	
 </resources>
