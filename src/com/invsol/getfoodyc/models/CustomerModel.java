@@ -1,5 +1,7 @@
 package com.invsol.getfoodyc.models;
 
+import org.json.JSONObject;
+
 import android.util.Log;
 
 public class CustomerModel {
@@ -8,6 +10,8 @@ public class CustomerModel {
 	private String gcm_registration_key;
 	private int customer_id;
 	private long phonenumber;
+	private String name, email, address, city, state;
+	private int zipcode;
 	
 	public String getGcm_registration_key() {
 		return gcm_registration_key;
@@ -42,5 +46,7 @@ public class CustomerModel {
 		this.phonenumber = phonenumber;
 	}
 	
-	
+	public void setCustomerProfileDetails(JSONObject customerJson){
+		
+	}
 }

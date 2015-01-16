@@ -100,6 +100,16 @@ public class AppEventsController {
 		}
 
 			break;
+		case NetworkEvents.EVENT_ID_LOGIN: {
+			Log.d(TAG, "Creating Bundle");
+			try {
+				modelFacade.getRemoteModel().loginUser(eventData,
+						NetworkResponseHandler.LOGINUSER_HANDLER, view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
+		}
+			break;
 		case NetworkEvents.EVENT_ID_PLACEORDER: {
 			try {
 				modelFacade.getRemoteModel().placeOrder(eventData,

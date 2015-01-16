@@ -16,6 +16,32 @@ import com.invsol.getfoodyc.net.NetworkAsyncTask;
 public class RemoteModel {
 	public static final String TAG = "Remote Model";
 	
+	public void loginUser(Bundle params, Handler listener, View view)
+			throws Exception {
+		ConnectivityHandler connHandler = new ConnectivityHandler(
+				view.getContext());
+		if (connHandler.isOnline()) {
+			HttpParams httpParams = new HttpParams();
+			httpParams.setRequestURL(Constants.BASE_URL
+					+ Constants.URL_POST_LOGIN_REQUEST);
+			httpParams.setRequestMethod(HttpParams.HTTP_POST);
+
+			//String requestData = CommonUtils.createPostdata(params);
+			String requestData = params.getString(Constants.JSON_POST_DATA);
+			httpParams.setRequestData(requestData);
+			Log.v(TAG, "Request Data=====>" + requestData);
+
+			NetworkAsyncTask asyncTask = new NetworkAsyncTask(
+					view.getContext(), "Connecting...", listener, true);
+			asyncTask.execute(httpParams);
+		} else {
+			listener.sendMessage(listener.obtainMessage(Constants.EXCEPTION,
+					view.getResources().getString(
+							R.string.error_no_network_connection)));
+		}
+	}
+	// --------------------------------------------------------------------------------------------------------
+	
 	public void registerUser(Bundle params,Handler listener,View view) throws Exception
 	{
 		ConnectivityHandler connHandler = new ConnectivityHandler(view.getContext());

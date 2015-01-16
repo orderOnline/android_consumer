@@ -3,17 +3,16 @@ package com.invsol.getfoodyc.net;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.invsol.getfoody.models.RestaurantModel;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+
 import com.invsol.getfoodyc.constants.Constants;
 import com.invsol.getfoodyc.controllers.AppEventsController;
 import com.invsol.getfoodyc.defines.ResponseTags;
 import com.invsol.getfoodyc.models.ConnectionModel;
 import com.invsol.getfoodyc.models.CustomerModel;
-
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
 
 public class NetworkResponseHandler {
@@ -22,6 +21,7 @@ public class NetworkResponseHandler {
 	public static final Handler PLACEORDER_HANDLER = placeOrderHandler();
 	public static final Handler REGISTERUSER_HANDLER = registerUserHandler();
 	public static final Handler REGISTERUSER_VALIDATEOTP_HANDLER = registerUserValidateOTPHandler();
+	public static final Handler LOGINUSER_HANDLER = loginUserHandler();
 
 	private static Handler placeOrderHandler() {
 		return new Handler() {
@@ -119,6 +119,45 @@ public class NetworkResponseHandler {
 							AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomerLoggedIn(true);
 							model.setConnectionStatus(ConnectionModel.SUCCESS);
 							model.notifyView(ResponseTags.TAG_VALIDATE_OTP, null);
+						}
+						
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+					break;
+				case Constants.EXCEPTION: {
+					Exception exceptionObj = (Exception) msg.obj;
+					Log.d(TAG, "exception:" + exceptionObj.getMessage());
+					Bundle dataBundle = new Bundle();
+					dataBundle.putString(Constants.JSON_ERROR_MESSAGE, exceptionObj.getMessage());
+					model.setConnectionStatus(ConnectionModel.ERROR);
+					model.setConnectionErrorMessage(exceptionObj.getMessage());
+					model.notifyView(ResponseTags.TAG_ERROR, dataBundle);
+				}
+					break;
+				}
+			}
+
+		};
+	}
+	
+	private static Handler loginUserHandler() {
+		return new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				ConnectionModel model = AppEventsController.getInstance()
+						.getModelFacade().getConnModel();
+				switch (msg.what) {
+				case Constants.SUCCESSFUL_RESPONSE: {
+					Log.d("response==", ((JSONObject) msg.obj).toString());
+					try {
+						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
+						if( (resp.get(Constants.JSON_TYPE)).equals(Constants.JSON_SUCCESS) ){
+							JSONObject restData = resp.getJSONObject(Constants.JSON_RESPONSE);
+							AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomerProfileDetails(restData);
+							model.setConnectionStatus(ConnectionModel.SUCCESS);
+							model.notifyView(ResponseTags.TAG_LOGIN, null);
 						}
 						
 					} catch (JSONException e) {

@@ -7,4 +7,5 @@ public class ResponseTags {
 	public static final int TAG_CHAT = 2;
 	public static final int TAG_REGISTER = 3;
 	public static final int TAG_VALIDATE_OTP = 4;
+	public static final int TAG_LOGIN = 5;
 }
