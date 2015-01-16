@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.View;
 
 public class AppEventsController {
-	
+
 	public static final String TAG = "Application Controller";
 	/**
 	 * Singleton Class Reference
@@ -75,8 +75,32 @@ public class AppEventsController {
 	 * Method to actually handle events
 	 */
 	private void fireEvents(int eventId, Bundle eventData, View view) {
-		switch(eventId){
-		case NetworkEvents.EVENT_ID_PLACEORDER:{
+		switch (eventId) {
+		case NetworkEvents.EVENT_ID_REGISTER: {
+			try {
+				modelFacade.getRemoteModel().registerUser(eventData,
+						NetworkResponseHandler.REGISTERUSER_HANDLER, view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
+		}
+
+			break;
+		case NetworkEvents.EVENT_ID_REGISTER_VALIDATEOTP: {
+			try {
+				modelFacade
+						.getRemoteModel()
+						.registerUserValidateOTP(
+								eventData,
+								NetworkResponseHandler.REGISTERUSER_VALIDATEOTP_HANDLER,
+								view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
+		}
+
+			break;
+		case NetworkEvents.EVENT_ID_PLACEORDER: {
 			try {
 				modelFacade.getRemoteModel().placeOrder(eventData,
 						NetworkResponseHandler.PLACEORDER_HANDLER, view);
@@ -84,7 +108,7 @@ public class AppEventsController {
 				Log.d("Application Exception:", ex.getMessage());
 			}
 		}
-		break;
+			break;
 		}
 	}
 

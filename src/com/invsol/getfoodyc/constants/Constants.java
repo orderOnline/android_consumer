@@ -6,7 +6,8 @@ public class Constants {
 		public static final String BASE_URL = "http://192.168.43.241:8080/jax-rs-heroku/";
 		//public static final String BASE_URL = "http://www.medoco.in/";
 		public static final String URL_POST_AUTHORIZE_REQUEST = "authorize/consumer.json";
-		public static final String URL_POST_AUTHENTICATE_REQUEST = "authenticate/consumer.json";
+		public static final String URL_POST_REGISTER_REQUEST = "register/consumer.json";
+		public static final String URL_POST_VALIDATEOTP_REQUEST = "register/consumer/validateotp.json";
 		public static final String URL_POST_NEW_ORDER = "orders/new.json";
 		public static final String URL_POST_CHAT = "orders/new.json";
 		// ----------------------------------------------------------------------------------
@@ -57,6 +58,9 @@ public class Constants {
 		public static final String JSON_CHAT_OWNER_TYPE = "owner_type";
 		public static final String JSON_CHAT_JSON = "chatjson";
 		public static final String JSON_ORDER_ID = "order_id";
+		public static final String JSON_OTPCODE = "otpcode";
+		public static final String JSON_GCM_KEY = "gcm_key";
+		public static final String JSON_VALID_OTP_CODE = "valid otp";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";
