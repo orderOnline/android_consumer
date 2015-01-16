@@ -67,4 +67,6 @@
     <color name="radiobutton_text">#6E6E6E</color>
     
     <color name="h1_textview_value">#7E7E7E</color>
+    
+    <color name="badge_textview_color">#dd4b39</color>
 </resources>

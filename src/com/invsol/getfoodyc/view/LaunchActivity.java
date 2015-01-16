@@ -31,7 +31,7 @@ public class LaunchActivity extends ActionBarActivity {
 			public void onClick(View view) {
 				Intent screenChangeIntent = null;
 				screenChangeIntent = new Intent(LaunchActivity.this,
-						OrderActivity.class);
+						HomeActivity.class);
 				LaunchActivity.this.startActivity(screenChangeIntent);
 			}
 		});
