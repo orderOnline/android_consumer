@@ -3,23 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
-        
+
         <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/defaultimage" >
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/defaultimage" >
 
-        <TextView
-            android:id="@+id/textview_restaurantname"
-            style="@style/H1TextViewStyle"
-            android:text="@string/text_dummytext" />
+            <TextView
+                android:id="@+id/textview_restaurantname"
+                style="@style/H1TextViewStyle"
+                android:text="@string/text_dummytext" />
+        </FrameLayout>
 
-    	</FrameLayout>
         <TextView
             android:id="@+id/textview_order_details"
             style="@style/H1TextViewStyle"
@@ -39,7 +39,6 @@
             android:layout_marginLeft="@dimen/items_horizontal_margin"
             android:layout_marginRight="@dimen/items_horizontal_margin"
             android:orientation="vertical" >
-
         </LinearLayout>
 
         <LinearLayout
@@ -62,15 +61,40 @@
                 android:gravity="right|center_vertical"
                 android:text="200.00"
                 android:textStyle="bold" />
-
         </LinearLayout>
-        
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/items_horizontal_margin"
             android:layout_marginRight="@dimen/items_horizontal_margin"
             android:background="#d8d9d8" />
+
+        <TextView
+            android:id="@+id/textview_order_address"
+            style="@style/H1TextViewStyle"
+            android:text="@string/text_orderaddress" />
+
+        <!-- <RadioGroup
+            android:id="@id/address_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/saved_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/text_saved" />
+
+            <RadioButton
+                android:id="@+id/new_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/text_new" />
+        </RadioGroup> -->
 
         <CheckBox
             android:id="@+id/checkbox_address"
@@ -78,26 +102,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="true"
-            android:text="@string/text_same_as_accountaddress" />
-        
+            android:text="@string/text_saved" />
+
+        <LinearLayout
+            android:id="@+id/layout_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone" >
+
         <EditText
             android:id="@+id/edittext_address"
             style="@style/H1EditTextStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="0dp"
             android:drawableEnd="@drawable/ic_address"
             android:drawableRight="@drawable/ic_address"
             android:hint="@string/text_watermark_address"
             android:inputType="textPostalAddress"
-            android:visibility="gone" >
-
+             >
         </EditText>
-        
+
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_room_white"
+            android:contentDescription="@string/OK" />
+
+        </LinearLayout>
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/items_horizontal_margin"
             android:layout_marginRight="@dimen/items_horizontal_margin"
             android:background="#d8d9d8" />
-        
+
         <EditText
             android:id="@+id/edittext_instructions"
             style="@style/H1EditTextStyle"
@@ -105,22 +147,20 @@
             android:drawableRight="@drawable/ic_instructions"
             android:hint="@string/text_watermark_instructions"
             android:inputType="textLongMessage" >
-
         </EditText>
-        
+
         <View
             android:layout_width="wrap_content"
             android:layout_height="1dp"
             android:layout_marginLeft="@dimen/items_horizontal_margin"
             android:layout_marginRight="@dimen/items_horizontal_margin"
             android:background="#d8d9d8" />
-        
+
         <TextView
             android:id="@+id/btn_place_order"
             style="@style/ButtonStyle"
             android:layout_width="match_parent"
             android:text="@string/action_place_order" />
-
     </LinearLayout>
 
 </ScrollView>

@@ -36,6 +36,7 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 	private CheckBox chkBoxAddress;
 	private ConnectionModel connModel;
 	private boolean isAddressChecked;
+	private LinearLayout layout_address;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +77,8 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		item_billamount = (TextView)findViewById(R.id.textview_bill_amount_value);
 		item_billamount.setText("650");
 		
+		layout_address = (LinearLayout)findViewById(R.id.layout_address);
+		
 		chkBoxAddress = (CheckBox)findViewById(R.id.checkbox_address);
 		edtTxtAddress = (EditText)findViewById(R.id.edittext_address);
 		isAddressChecked = chkBoxAddress.isChecked();
@@ -85,9 +88,9 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				isAddressChecked = isChecked;
 				if(!isChecked){
-					edtTxtAddress.setVisibility(View.VISIBLE);
+					layout_address.setVisibility(View.VISIBLE);
 				}else{
-					edtTxtAddress.setVisibility(View.GONE);
+					layout_address.setVisibility(View.GONE);
 				}
 			}
 		});
@@ -104,8 +107,9 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 				try {
 					postData.put(Constants.JSON_ORDER_TOTAL, Integer.parseInt(item_billamount.getText().toString()));
 					postData.put(Constants.JSON_RESTAURANT_ID, 3);
-					postData.put(Constants.JSON_CONSUMER_ID, 0);
-					postData.put(Constants.JSON_INSTRUCTIONS, editText_instructions.getText());
+					postData.put(Constants.JSON_CONSUMER_ID, 2);
+					if( (null != editText_instructions.getText().toString()) || !(editText_instructions.getText().toString().isEmpty()) )
+						postData.put(Constants.JSON_INSTRUCTIONS, editText_instructions.getText());
 					if( isAddressChecked )
 						postData.put(Constants.JSON_ADDRESS, "Flat-501, Sector-22, Dwarka");
 					else

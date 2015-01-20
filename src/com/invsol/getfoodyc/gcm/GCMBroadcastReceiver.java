@@ -28,6 +28,7 @@ import com.invsol.getfoodyc.controllers.AppEventsController;
 import com.invsol.getfoodyc.defines.ResponseTags;
 import com.invsol.getfoodyc.models.ConnectionModel;
 import com.invsol.getfoodyc.view.ChatActivity;
+import com.invsol.getfoodyc.view.ConfirmationActivity;
 import com.invsol.getfoodyc.view.OrderActivity;
 
 /**
@@ -68,7 +69,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
             	Set<String> keys = intent.getExtras().keySet();
             	for (Iterator<String> iterator = keys.iterator(); iterator.hasNext();) {
 					String string = (String) iterator.next();
-					if( string.equals("ORDER") ){
+					if( string.equals("order_status") ){
 						gcmMessage = intent.getExtras().getString(string);
 		            	 //String orderMsg = new String();
 		            	 Log.i(TAG, "Received: " + gcmMessage);
@@ -106,16 +107,16 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            				AlertDialog alertDialog = builder.create();
 		            				alertDialog.show();
 		            		 }else if(!GetFoodyCustomerApplication.isActivityVisible()){
-			            		 inboxStyle = new Notification.InboxStyle();
+			            		 /*inboxStyle = new Notification.InboxStyle();
 			            		 String[] events = new String[2];
-			            		 events[0] = json.getString(Constants.JSON_ORDER_STATUS);
-			            		 events[1] = json.getString(Constants.JSON_ORDER_MESSAGE);
+			            		 events[0] = "Order Status: "+json.getString(Constants.JSON_ORDER_STATUS);
+			            		 events[1] = "Details: " +json.getString(Constants.JSON_ORDER_STATEMENT);
 			            		 // Sets a title for the Inbox in expanded layout
 			            		 //inboxStyle.setBigContentTitle("Order details:");
 			            		 // Moves events into the expanded layout
 			            		 for (int i=0; i < events.length; i++) {
 			        			    inboxStyle.addLine(events[i]);
-			            		 }
+			            		 }*/
 			            		 sendNotification(true);
 		            		 }
 						} catch (JSONException e) {					
@@ -175,15 +176,20 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
     private void sendNotification(boolean launchApp) {
     	int icon = R.drawable.ic_launcher;
         NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent notificationIntent = new Intent(ctx, OrderActivity.class);
+        Intent notificationIntent = new Intent(ctx, ConfirmationActivity.class);
         notificationIntent.putExtra("ORDER", gcmMessage);
+        JSONObject json;
+		try {
+			json = new JSONObject(gcmMessage);
+		
 		  PendingIntent intent = PendingIntent.getActivity(ctx, 0,
 				    notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		  Notification notification = new Notification.Builder(ctx)
 			 .setContentIntent(intent)
-			 //.setContentTitle("New Order")
+			 .setContentTitle("Order Status: "+json.getString(Constants.JSON_ORDER_STATUS))
+			 .setContentText("Details: " +json.getString(Constants.JSON_ORDER_STATEMENT))
 	         .setSmallIcon(icon)
-	         .setStyle(inboxStyle)
+	        // .setStyle(inboxStyle)
 	        // .setNumber(numOfMessages)
 	         .build();
          
@@ -198,6 +204,10 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
         		  notification.flags |= Notification.FLAG_NO_CLEAR;
         		  mNotificationManager.notify(0, notification);
         }
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 	
     private void sendChatNotification( String text, boolean launchApp ){

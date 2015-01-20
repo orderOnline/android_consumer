@@ -54,6 +54,7 @@
         <activity android:name=".view.HomeActivity"></activity>
         <activity android:name=".view.ChatActivity"></activity>
         <activity android:name=".view.LoginActivity"></activity>
+        <activity android:name=".view.ConfirmationActivity"></activity>
     </application>
 
 </manifest>

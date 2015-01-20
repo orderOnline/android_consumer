@@ -49,8 +49,8 @@ public class Constants {
 		public static final String JSON_QUANTITY = "quantity";
 		public static final String JSON_INSTRUCTIONS = "instructions";
 		public static final String JSON_ADDRESS = "address";
-		public static final String JSON_ORDER_STATUS = "orderstatus";
-		public static final String JSON_ORDER_MESSAGE = "ordermessage";
+		public static final String JSON_ORDER_STATUS = "order_status";
+		public static final String JSON_ORDER_MESSAGE = "order_message";
 		public static final String JSON_ORDER_STATEMENT = "orderstatement";
 		public static final String JSON_CHAT_ORDER_ID = "order_id";
 		public static final String JSON_CHAT_OWNER_ID = "owner_id";
@@ -62,6 +62,11 @@ public class Constants {
 		public static final String JSON_OTPCODE = "otpcode";
 		public static final String JSON_GCM_KEY = "gcm_key";
 		public static final String JSON_VALID_OTP_CODE = "valid otp";
+		public static final String JSON_NAME = "name";
+		public static final String JSON_EMAIL = "email";
+		public static final String JSON_CITY = "city";
+		public static final String JSON_STATE = "state";
+		public static final String JSON_ZIPCODE = "zipcode";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";

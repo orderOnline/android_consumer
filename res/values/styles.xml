@@ -217,7 +217,6 @@
 		<item name="android:layout_height">wrap_content</item>
 		<item name="android:layout_marginLeft">@dimen/checkbox_horizontal_margin</item>
 		<item name="android:layout_marginRight">@dimen/checkbox_horizontal_margin</item>
-		<item name="android:layout_marginTop">@dimen/checkbox_vertical_margin</item>>
 	</style>
 	
     <style name="HorizontalAlphabetListStyle">

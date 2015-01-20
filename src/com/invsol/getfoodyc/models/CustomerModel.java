@@ -1,6 +1,9 @@
 package com.invsol.getfoodyc.models;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.invsol.getfoodyc.constants.Constants;
 
 import android.util.Log;
 
@@ -47,6 +50,15 @@ public class CustomerModel {
 	}
 	
 	public void setCustomerProfileDetails(JSONObject customerJson){
-		
+		try {
+			name = customerJson.getString(Constants.JSON_NAME);
+			city = customerJson.getString(Constants.JSON_CITY);
+			state = customerJson.getString(Constants.JSON_STATE);
+			address = customerJson.getString(Constants.JSON_ADDRESS);
+			zipcode = customerJson.getInt(Constants.JSON_ZIPCODE);
+			email = customerJson.getString(Constants.JSON_EMAIL);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 }

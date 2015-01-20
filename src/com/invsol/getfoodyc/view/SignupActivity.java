@@ -272,6 +272,22 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 			this.finish();
 		}
 		break;
+		case ResponseTags.TAG_ERROR:{
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setTitle(getResources().getString(R.string.info));
+			builder.setMessage(data.getString(Constants.JSON_ERROR_MESSAGE));
+			builder.setPositiveButton(getResources().getString(R.string.OK),
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							dialog.cancel();
+						}
+					});
+			AlertDialog alertDialog = builder.create();
+			alertDialog.show();
+		}
+		break;
 		}
 	}
 	
