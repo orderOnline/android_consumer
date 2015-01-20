@@ -175,17 +175,19 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 		                SmsMessage message = messages[i];
 		                String body = message.getMessageBody().toString();
 		                Log.d("sms recvd", "sms got=="+body);
-		                int indexOfColon = body.indexOf(":");
-		                otpCode = body.substring(indexOfColon+1, body.length());
+		                if( body.contains("OTP Code")){
+		                	int indexOfColon = body.indexOf(":");
+		                	otpCode = body.substring(indexOfColon+1, body.length());
+		                	LinearLayout validateOtpLayout = (LinearLayout)findViewById(R.id.linearlayout_validateotp);
+				    		for ( int j = 0; j < validateOtpLayout.getChildCount();  j++ ){
+				    		    View view = validateOtpLayout.getChildAt(j);
+				    		    view.setEnabled(true);
+				    		}
+				    		
+				    		EditText otpTextBox = (EditText) findViewById(R.id.edittext_singup_otp);
+				    		otpTextBox.setText(otpCode);
+		                }
 		            }
-		            LinearLayout validateOtpLayout = (LinearLayout)findViewById(R.id.linearlayout_validateotp);
-		    		for ( int i = 0; i < validateOtpLayout.getChildCount();  i++ ){
-		    		    View view = validateOtpLayout.getChildAt(i);
-		    		    view.setEnabled(true);
-		    		}
-		    		
-		    		EditText otpTextBox = (EditText) findViewById(R.id.edittext_singup_otp);
-		    		otpTextBox.setText(otpCode);
 		        }
  
 			}
@@ -283,6 +285,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 	@Override
 	protected void onPause() {
 	  super.onPause();
+	  //this.unregisterReceiver(smsReceiver);
 	  GetFoodyCustomerApplication.clearReferences();
 	  GetFoodyCustomerApplication.activityPaused();
 	}

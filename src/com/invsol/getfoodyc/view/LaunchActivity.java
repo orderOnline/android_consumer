@@ -47,6 +47,18 @@ public class LaunchActivity extends ActionBarActivity {
 				LaunchActivity.this.startActivity(screenChangeIntent);
 			}
 		});
+		
+		TextView btn_loginphonenumber = (TextView) findViewById(R.id.textview_login_options_phonenumber);
+		btn_loginphonenumber.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View view) {
+				Intent screenChangeIntent = null;
+				screenChangeIntent = new Intent(LaunchActivity.this,
+						LoginActivity.class);
+				LaunchActivity.this.startActivity(screenChangeIntent);
+			}
+		});
 	}
 
 	@Override

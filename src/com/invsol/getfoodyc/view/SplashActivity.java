@@ -28,7 +28,7 @@ public class SplashActivity extends FragmentActivity{
 
 	// Time in Milliseconds
 	private int SPLASH_TIMER = 2000;
-	private String accessToken;
+	private boolean loginStatus;
 	private String TAG = "SplashActivity";
 	
 	//GCM Variables
@@ -65,16 +65,17 @@ public class SplashActivity extends FragmentActivity{
             if (regid.isEmpty()) {
                 GCMAsyncTask gcmRegistrationTask = new GCMAsyncTask(context, "", gcmResponseHandler());
                 gcmRegistrationTask.execute(null, null, null);
+            }else{
+            	AppEventsController.getInstance().getModelFacade().getCustomerModel().setGcm_registration_key(regid);
             }
 		}else{
 			Log.i(TAG, "No valid Google Play Services APK found.");
 		}
 		
-		/*SharedPreferences sharedPref = getSharedPreferences(
-				Constants.DATABASE_PREF_NAME, MODE_PRIVATE);
-		accessToken = sharedPref.getString(Constants.TEXT_ACCESSTOKEN,
-				Constants.TEXT_DATABASE_ACCESS_VALUE_DEFAULT);
-		AppEventsController.getInstance().getModelFacade().getUserModel().setAccessToken(accessToken);*/
+		SharedPreferences sharedPref = getSharedPreferences(
+				Constants.LOGIN_DATABASE_PREF_NAME, MODE_PRIVATE);
+		loginStatus = sharedPref.getBoolean(Constants.LOGIN_STATUS, false);
+		AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomerLoggedIn(loginStatus);
 		
 		new Handler().postDelayed(new Runnable() {
 
