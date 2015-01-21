@@ -1,5 +1,6 @@
 package com.invsol.getfoodyc.view;
 
+import com.invsol.getfoodyc.GetFoodyCustomerApplication;
 import com.invsol.getfoodyc.R;
 
 import android.content.Intent;
@@ -28,5 +29,20 @@ public class HomeActivity extends ActionBarActivity{
 				HomeActivity.this.startActivity(screenChangeIntent);
 			}
 		});
+	}
+	
+	@Override
+	protected void onResume() {
+	  super.onResume();
+	  GetFoodyCustomerApplication.setCurrentActivity(this);
+	  GetFoodyCustomerApplication.activityResumed();
+	}
+
+	@Override
+	protected void onPause() {
+	  super.onPause();
+	  //this.unregisterReceiver(smsReceiver);
+	  GetFoodyCustomerApplication.clearReferences();
+	  GetFoodyCustomerApplication.activityPaused();
 	}
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.invsol.getfoodyc.GetFoodyCustomerApplication;
 import com.invsol.getfoodyc.R;
 import com.invsol.getfoodyc.constants.Constants;
 
@@ -54,5 +55,20 @@ public class ConfirmationActivity extends ActionBarActivity{
 				finish();
 			}
 		});
+	}
+	
+	@Override
+	protected void onResume() {
+	  super.onResume();
+	  GetFoodyCustomerApplication.setCurrentActivity(this);
+	  GetFoodyCustomerApplication.activityResumed();
+	}
+
+	@Override
+	protected void onPause() {
+	  super.onPause();
+	  //this.unregisterReceiver(smsReceiver);
+	  GetFoodyCustomerApplication.clearReferences();
+	  GetFoodyCustomerApplication.activityPaused();
 	}
 }

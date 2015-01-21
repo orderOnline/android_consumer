@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.invsol.getfoodyc.GetFoodyCustomerApplication;
 import com.invsol.getfoodyc.R;
 import com.invsol.getfoodyc.constants.Constants;
 import com.invsol.getfoodyc.controllers.AppEventsController;
@@ -212,5 +213,20 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		}
 		break;
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+	  super.onResume();
+	  GetFoodyCustomerApplication.setCurrentActivity(this);
+	  GetFoodyCustomerApplication.activityResumed();
+	}
+
+	@Override
+	protected void onPause() {
+	  super.onPause();
+	  //this.unregisterReceiver(smsReceiver);
+	  GetFoodyCustomerApplication.clearReferences();
+	  GetFoodyCustomerApplication.activityPaused();
 	}
 }

@@ -78,7 +78,12 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            		 
 		            		 //Code to check whether the app is in foreground or not
 		            		 if(GetFoodyCustomerApplication.isActivityVisible()){
-		            			 final Activity currentActivity = GetFoodyCustomerApplication.getCurrentActivity();
+		            			 Intent screenChangeIntent = null;
+		         					screenChangeIntent = new Intent(ctx,
+		         						ConfirmationActivity.class);
+		         					screenChangeIntent.putExtra("ORDER-STATUS", gcmMessage);
+		         					ctx.startActivity(screenChangeIntent);
+		            			 /*final Activity currentActivity = GetFoodyCustomerApplication.getCurrentActivity();
 		            			 AlertDialog.Builder builder = new AlertDialog.Builder(
 		            					 currentActivity);
 		            				builder.setTitle(currentActivity.getResources().getString(R.string.info));
@@ -105,7 +110,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
             							}
             						});
 		            				AlertDialog alertDialog = builder.create();
-		            				alertDialog.show();
+		            				alertDialog.show();*/
 		            		 }else if(!GetFoodyCustomerApplication.isActivityVisible()){
 			            		 /*inboxStyle = new Notification.InboxStyle();
 			            		 String[] events = new String[2];
