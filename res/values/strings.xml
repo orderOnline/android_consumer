@@ -29,6 +29,8 @@
     <string name="text_button_register">New user? Register here</string>
     <string name="text_button_submit">Submit</string>
     <string name="text_button_validate">Validate</string>
+    <string name="action_button_ok">OK</string>
+    
     
     <!-- Launch Specific Strings -->
     <string name="text_login"><b>LOG IN</b></string>
@@ -58,6 +60,12 @@
     
     <!-- Signup Specific Strings -->
     <string name="text_signup_validateotp_details">Please enter the OTP sent to your mobile number.</string>
+    
+    <!-- Confirmation Specific Strings -->
+    <string name="text_confirmation_orderstatus_details">Order Details</string>
+    <string name="text_confirmation_ordersstatus">Status: </string>
+    <string name="text_confirmation_ordersstatement">Info: </string>
+    <string name="text_confirmation_help">In case you want to update your order, please use the CHAT button.</string>
     
     <string name="error_no_network_connection">Please check your network services.</string>
     <string name="error">Error</string>

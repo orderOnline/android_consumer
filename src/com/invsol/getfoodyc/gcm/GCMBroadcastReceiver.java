@@ -177,7 +177,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
     	int icon = R.drawable.ic_launcher;
         NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
         Intent notificationIntent = new Intent(ctx, ConfirmationActivity.class);
-        notificationIntent.putExtra("ORDER", gcmMessage);
+        notificationIntent.putExtra("ORDER-STATUS", gcmMessage);
         JSONObject json;
 		try {
 			json = new JSONObject(gcmMessage);
