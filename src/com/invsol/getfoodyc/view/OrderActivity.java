@@ -179,8 +179,9 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 							Intent screenChangeIntent = null;
 							screenChangeIntent = new Intent(OrderActivity.this,
 									ChatActivity.class);
-							OrderActivity.this.startActivity(screenChangeIntent);
-							OrderActivity.this.finish();
+							startActivity(screenChangeIntent);
+							connModel.unregisterAllView();
+							finish();
 						}
 					});
 			builder.setNegativeButton(getResources().getString(R.string.OK),
@@ -188,8 +189,9 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 
 						@Override
 						public void onClick(DialogInterface dialog, int which) {
+							connModel.unregisterAllView();
 							dialog.cancel();
-							OrderActivity.this.finish();
+							finish();
 						}
 					});
 			AlertDialog alertDialog = builder.create();
