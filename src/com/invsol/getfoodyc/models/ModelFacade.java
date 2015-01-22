@@ -9,6 +9,8 @@ public class ModelFacade {
 	private ConnectionModel connModel;
 	private LocalModel localModel;
 	private CustomerModel customerModel;
+	private OrdersModel orderModel;
+	private ChatModel chatModel;
 	// ---------------------------------------------------------------------------------
 
 	/**
@@ -20,6 +22,8 @@ public class ModelFacade {
 		connModel = new ConnectionModel();
 		localModel = new LocalModel();
 		customerModel = new CustomerModel();
+		orderModel = new OrdersModel();
+		chatModel = new ChatModel();
 	}
 
 	// ---------------------------------------------------------------------------------
@@ -43,6 +47,14 @@ public class ModelFacade {
 
 	public CustomerModel getCustomerModel() {
 		return customerModel;
+	}
+
+	public OrdersModel getOrderModel() {
+		return orderModel;
+	}
+
+	public ChatModel getChatModel() {
+		return chatModel;
 	}
 
 	

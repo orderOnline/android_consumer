@@ -21,6 +21,7 @@ import com.invsol.getfoodyc.controllers.AppEventsController;
 import com.invsol.getfoodyc.dataobjects.ChatItem;
 import com.invsol.getfoodyc.dataobjects.ChatMessage;
 import com.invsol.getfoodyc.defines.NetworkEvents;
+import com.invsol.getfoodyc.defines.ResponseTags;
 import com.invsol.getfoodyc.listeners.ActivityUpdateListener;
 import com.invsol.getfoodyc.models.ConnectionModel;
 
@@ -33,6 +34,7 @@ public class ChatActivity extends ActionBarActivity implements
 	private ListView chatList;
 	private ChatAdapter chatAdapter;
 	private JSONObject chatJson;
+	private ArrayList<ChatMessage> chatMessages;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,26 +44,21 @@ public class ChatActivity extends ActionBarActivity implements
 		connModel = AppEventsController.getInstance().getModelFacade()
 				.getConnModel();
 		connModel.registerView(this);
+		
+		chatList = (ListView) findViewById(R.id.chatList);
+		chatMessages = new ArrayList<ChatMessage>();
+		chatAdapter = new ChatAdapter(this, R.layout.activity_chat,
+				chatMessages);
+		chatList.setAdapter(chatAdapter);
 
-		try {
-			chatJson = new JSONObject(getIntent().getStringExtra("CHAT"));
-			// ChatItem chatItem =
-			// AppEventsController.getInstance().getModelFacade().getChatModel().getChatItems().get(chatJson.getInt(Constants.JSON_ORDER_ID));
-			chatList = (ListView) findViewById(R.id.chatList);
-			ChatItem chatItem = new ChatItem(
-					chatJson.getInt(Constants.JSON_CHAT_ORDER_ID));
-			chatItem.addChatMessage(
-					chatJson.getInt(Constants.JSON_CHAT_OWNER_ID),
-					chatJson.getString(Constants.JSON_CHAT_OWNER_NAME),
-					chatJson.getString(Constants.JSON_CHAT_MESSAGE), "CONSUMER");
-			chatItem.addChatMessage(3, "Manpasand", "Order Updated",
-					"RESTAURANT");
-			chatAdapter = new ChatAdapter(this, R.layout.activity_chat,
-					chatItem.getMessages());
-			chatList.setAdapter(chatAdapter);
-
-		} catch (JSONException e) {
-			e.printStackTrace();
+		if (getIntent().hasExtra("CHAT")) {
+			try {
+				chatJson = new JSONObject(getIntent().getStringExtra("CHAT"));
+				ChatItem chatItem = AppEventsController.getInstance().getModelFacade().getChatModel().getChatItems().get(chatJson.getInt(Constants.JSON_ORDER_ID));
+				
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
 		}
 
 		edittext_writehere = (EditText) findViewById(R.id.edittext_writehere);
@@ -73,8 +70,12 @@ public class ChatActivity extends ActionBarActivity implements
 				Bundle eventData = new Bundle();
 				JSONObject postData = new JSONObject();
 				try {
-					postData.put(Constants.JSON_CHAT_ORDER_ID, 0);
-					postData.put(Constants.JSON_CHAT_OWNER_ID, 3);
+					postData.put(Constants.JSON_CHAT_ORDER_ID,
+							AppEventsController.getInstance().getModelFacade()
+									.getOrderModel().getOrder_id());
+					postData.put(Constants.JSON_CHAT_OWNER_ID,
+							AppEventsController.getInstance().getModelFacade()
+									.getCustomerModel().getCustomer_id());
 					postData.put(Constants.JSON_CHAT_OWNER_TYPE, "CONSUMER");
 					postData.put(Constants.JSON_CHAT_MESSAGE,
 							edittext_writehere.getText().toString());
@@ -85,26 +86,46 @@ public class ChatActivity extends ActionBarActivity implements
 						postData.toString());
 				AppEventsController.getInstance().handleEvent(
 						NetworkEvents.EVENT_ID_CHAT, eventData, btn_send);
-				try {
-					ArrayList<ChatMessage> items = chatAdapter.getChatItems();
-					ChatMessage msg;
-					msg = new ChatMessage(chatJson
-							.getInt(Constants.JSON_CHAT_OWNER_ID), chatJson
-							.getString(Constants.JSON_CHAT_OWNER_NAME),
-							edittext_writehere.getText().toString(), "CONSUMER");
-					items.add(msg);
-					chatAdapter.notifyDataSetChanged();
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				ArrayList<ChatMessage> items = chatAdapter.getChatItems();
+				ChatMessage msg;
+				msg = new ChatMessage(AppEventsController.getInstance()
+						.getModelFacade().getCustomerModel().getCustomer_id(),
+						AppEventsController.getInstance().getModelFacade()
+								.getCustomerModel().getName(),
+						edittext_writehere.getText().toString(), "CONSUMER");
+				items.add(msg);
+				chatAdapter.notifyDataSetChanged();
+				
+				edittext_writehere.setText("");
 			}
 		});
 	}
 
 	@Override
 	public void updateActivity(int tag, Bundle data) {
+		switch (tag) {
+		case ResponseTags.TAG_CHAT: {
+			try {
+				JSONObject chatJson = new JSONObject(
+						data.getString(Constants.JSON_CHAT_JSON));
+				ArrayList<ChatMessage> items = chatAdapter.getChatItems();
+				ChatMessage msg;
+				msg = new ChatMessage(chatJson.getInt(Constants.JSON_CHAT_OWNER_ID),
+						chatJson.getString(Constants.JSON_CHAT_OWNER_NAME),
+						chatJson.getString(Constants.JSON_CHAT_MESSAGE),
+						chatJson.getString(Constants.JSON_CHAT_OWNER_TYPE));
+				items.add(msg);
+				chatAdapter.notifyDataSetChanged();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+			break;
 
+		default:
+			break;
+		}
 	}
 
 	@Override

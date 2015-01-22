@@ -36,6 +36,7 @@ public class NetworkResponseHandler {
 						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
 						if( (resp.get(Constants.JSON_TYPE)).equals(Constants.JSON_SUCCESS) ){
 							JSONObject restData = resp.getJSONObject(Constants.JSON_RESPONSE);
+							AppEventsController.getInstance().getModelFacade().getOrderModel().setOrder_id(restData.getInt(Constants.JSON_ORDER_ID));
 							Bundle dataBundle = new Bundle();
 							dataBundle.putInt(Constants.JSON_ORDER_ID, restData.getInt(Constants.JSON_ORDER_ID));
 							model.setConnectionStatus(ConnectionModel.SUCCESS);

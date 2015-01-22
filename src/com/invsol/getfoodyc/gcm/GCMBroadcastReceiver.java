@@ -157,6 +157,7 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            								Intent screenChangeIntent = null;
 		            								screenChangeIntent = new Intent(ctx,
 		            										ChatActivity.class);
+		            								screenChangeIntent.putExtra("CHAT", chatMessage);
 		            								ctx.startActivity(screenChangeIntent);
 		            							}
 		            						});
