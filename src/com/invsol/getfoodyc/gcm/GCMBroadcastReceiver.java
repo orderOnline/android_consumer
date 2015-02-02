@@ -29,7 +29,6 @@ import com.invsol.getfoodyc.defines.ResponseTags;
 import com.invsol.getfoodyc.models.ConnectionModel;
 import com.invsol.getfoodyc.view.ChatActivity;
 import com.invsol.getfoodyc.view.ConfirmationActivity;
-import com.invsol.getfoodyc.view.OrderActivity;
 
 /**
  * This {@code WakefulBroadcastReceiver} takes care of creating and managing a
@@ -78,11 +77,12 @@ public class GCMBroadcastReceiver extends WakefulBroadcastReceiver {
 		            		 
 		            		 //Code to check whether the app is in foreground or not
 		            		 if(GetFoodyCustomerApplication.isActivityVisible()){
+		            			 final Activity currentActivity = GetFoodyCustomerApplication.getCurrentActivity();
 		            			 Intent screenChangeIntent = null;
-		         					screenChangeIntent = new Intent(ctx,
+		         					screenChangeIntent = new Intent(currentActivity,
 		         						ConfirmationActivity.class);
 		         					screenChangeIntent.putExtra("ORDER-STATUS", gcmMessage);
-		         					ctx.startActivity(screenChangeIntent);
+		         					currentActivity.startActivity(screenChangeIntent);
 		            			 /*final Activity currentActivity = GetFoodyCustomerApplication.getCurrentActivity();
 		            			 AlertDialog.Builder builder = new AlertDialog.Builder(
 		            					 currentActivity);
