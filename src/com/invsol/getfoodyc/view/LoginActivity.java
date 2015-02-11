@@ -223,6 +223,7 @@ public class LoginActivity extends ActionBarActivity implements
 						Constants.LOGIN_DATABASE_PREF_NAME, Context.MODE_PRIVATE);
 				Editor editor = prefs.edit();
 				editor.putBoolean(Constants.LOGIN_STATUS, true);
+				editor.putInt(Constants.JSON_CONSUMER_ID, AppEventsController.getInstance().getModelFacade().getCustomerModel().getCustomer_id());
 				editor.commit();
 				AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomerLoggedIn(true);
 				this.finish();

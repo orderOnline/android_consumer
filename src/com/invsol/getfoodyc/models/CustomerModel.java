@@ -57,6 +57,7 @@ public class CustomerModel {
 			address = customerJson.getString(Constants.JSON_ADDRESS);
 			zipcode = customerJson.getInt(Constants.JSON_ZIPCODE);
 			email = customerJson.getString(Constants.JSON_EMAIL);
+			customer_id = customerJson.getInt(Constants.JSON_CONSUMER_ID);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -86,5 +87,15 @@ public class CustomerModel {
 		return zipcode;
 	}
 	
-	
+	public void clearCustomerDetails()
+	{
+		name = null;
+		city = null;
+		state = null;
+		address = null;
+		zipcode = 0;
+		email = null;
+		customer_id = 0;
+		phonenumber = 0;
+	}
 }

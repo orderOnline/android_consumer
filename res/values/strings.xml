@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">OrderOnline-C</string>
+    <string name="app_name">FoodBlazeC</string>
     <string name="cd_img">image</string>
     <string name="text_dummytext">Dummy text</string>
     
@@ -38,6 +38,9 @@
     <string name="text_launch_googleplus">Google+</string>
     <string name="text_launch_phonenumber">Phonenumber</string>
     <string name="text_launch_register">Register</string>
+    <string name="text_launch_unregister">UnRegister</string>
+    <string name="text_launch_unregistered_success">UnRegistered Successfully.</string>
+    <string name="text_launch_unregistered_failure">Please try again.</string>
     
     <!-- Splash Specific Strings -->
     <string name="text_splash_version">Version</string>

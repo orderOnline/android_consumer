@@ -110,6 +110,20 @@
                 android:drawableEnd="@drawable/ic_user_register"
                 android:drawableRight="@drawable/ic_user_register"
                 android:text="@string/text_launch_register" />
+            
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/items_vertical_margin"
+                android:background="@color/straight_redline_color" />
+
+            <TextView
+                android:id="@+id/textview_login_options_unregister"
+                style="@style/H1TextViewStyle"
+                android:clickable="true"
+                android:drawableEnd="@drawable/ic_user_register"
+                android:drawableRight="@drawable/ic_user_register"
+                android:text="@string/text_launch_unregister" />
         </LinearLayout>
     </RelativeLayout>
 

@@ -8,4 +8,5 @@ public class ResponseTags {
 	public static final int TAG_REGISTER = 3;
 	public static final int TAG_VALIDATE_OTP = 4;
 	public static final int TAG_LOGIN = 5;
+	public static final int TAG_UNREGISTER = 6;
 }

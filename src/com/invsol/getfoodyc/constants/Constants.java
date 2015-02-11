@@ -3,13 +3,14 @@ package com.invsol.getfoodyc.constants;
 public class Constants {
 	
 	// Required URLs
-		//public static final String BASE_URL = "http://10.65.66.184:8080/jax-rs-heroku/";
-		public static final String BASE_URL = "http://www.medoco.in/";
+		public static final String BASE_URL = "http://192.168.42.9:8080/jax-rs-heroku/";
+		//public static final String BASE_URL = "http://www.medoco.in/";
 		public static final String URL_POST_LOGIN_REQUEST = "login/consumer.json";
 		public static final String URL_POST_REGISTER_REQUEST = "register/consumer.json";
 		public static final String URL_POST_VALIDATEOTP_REQUEST = "register/consumer/validateotp.json";
 		public static final String URL_POST_NEW_ORDER = "orders/new.json";
 		public static final String URL_POST_CHAT = "orders/new.json";
+		public static final String URL_DELETE_CONSUMER = "profile/consumer/";
 		// ----------------------------------------------------------------------------------
 		
 		/**
@@ -34,6 +35,7 @@ public class Constants {
 		public static final String JSON_RESULT = "result";
 		public static final String JSON_TYPE = "type";
 		public static final String JSON_SUCCESS = "success";
+		public static final String JSON_ERROR = "error";
 		public static final String JSON_RESPONSE = "response";
 		public static final String JSON_ERROR_MESSAGE = "errormessage";
 		

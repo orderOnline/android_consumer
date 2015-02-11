@@ -22,6 +22,7 @@ public class NetworkResponseHandler {
 	public static final Handler REGISTERUSER_HANDLER = registerUserHandler();
 	public static final Handler REGISTERUSER_VALIDATEOTP_HANDLER = registerUserValidateOTPHandler();
 	public static final Handler LOGINUSER_HANDLER = loginUserHandler();
+	public static final Handler UNREGISTERCONSUMER_HANDLER = unregisterConsumerHandler();
 
 	private static Handler placeOrderHandler() {
 		return new Handler() {
@@ -64,6 +65,46 @@ public class NetworkResponseHandler {
 		};
 	}
 	
+	private static Handler unregisterConsumerHandler() {
+		return new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				ConnectionModel model = AppEventsController.getInstance()
+						.getModelFacade().getConnModel();
+				switch (msg.what) {
+				case Constants.SUCCESSFUL_RESPONSE: {
+					Log.d("response==", ((JSONObject) msg.obj).toString());
+					try {
+						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
+						String type = resp.getString(Constants.JSON_TYPE);
+						if( type.equals(Constants.JSON_SUCCESS)){
+							model.setConnectionStatus(ConnectionModel.SUCCESS);
+							model.notifyView(ResponseTags.TAG_UNREGISTER, null);
+						}else{
+							model.setConnectionStatus(ConnectionModel.ERROR);
+							model.notifyView(ResponseTags.TAG_UNREGISTER, null);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+					break;
+				case Constants.EXCEPTION: {
+					Exception exceptionObj = (Exception) msg.obj;
+					Log.d(TAG, "exception:" + exceptionObj.getMessage());
+					Bundle dataBundle = new Bundle();
+					dataBundle.putString(Constants.JSON_ERROR_MESSAGE, exceptionObj.getMessage());
+					model.setConnectionStatus(ConnectionModel.ERROR);
+					model.setConnectionErrorMessage(exceptionObj.getMessage());
+					model.notifyView(ResponseTags.TAG_ERROR, dataBundle);
+				}
+					break;
+				}
+			}
+
+		};
+	}
+
 	private static Handler registerUserHandler() {
 		return new Handler() {
 			@Override
@@ -79,13 +120,18 @@ public class NetworkResponseHandler {
 					try {
 						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
 						JSONObject restData = (JSONObject)resp.getJSONObject(Constants.JSON_RESPONSE);
-						customerModel.setPhonenumber(restData.getLong(Constants.JSON_PHONENUMBER));
-						customerModel.setCustomer_id(restData.getInt(Constants.JSON_CONSUMER_ID));
+						String type = restData.getString(Constants.JSON_TYPE);
+						if( type.equals(Constants.JSON_SUCCESS)){
+							customerModel.setPhonenumber(restData.getLong(Constants.JSON_PHONENUMBER));
+							customerModel.setCustomer_id(restData.getInt(Constants.JSON_CONSUMER_ID));
+							model.setConnectionStatus(ConnectionModel.SUCCESS);
+							model.notifyView(ResponseTags.TAG_REGISTER, null);
+						}else if(type.equals(Constants.JSON_ERROR)){
+							model.notifyView(ResponseTags.TAG_ERROR, null);
+						}
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
-					model.setConnectionStatus(ConnectionModel.SUCCESS);
-					model.notifyView(ResponseTags.TAG_REGISTER, null);
 				}
 					break;
 				case Constants.EXCEPTION: {

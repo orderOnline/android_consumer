@@ -76,6 +76,7 @@ public class SplashActivity extends FragmentActivity{
 				Constants.LOGIN_DATABASE_PREF_NAME, MODE_PRIVATE);
 		loginStatus = sharedPref.getBoolean(Constants.LOGIN_STATUS, false);
 		AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomerLoggedIn(loginStatus);
+		AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomer_id(sharedPref.getInt(Constants.JSON_CONSUMER_ID, -1));
 		
 		new Handler().postDelayed(new Runnable() {
 

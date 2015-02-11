@@ -119,7 +119,16 @@ public class AppEventsController {
 			}
 		}
 			break;
+		case NetworkEvents.EVENT_ID_UNREGISTER:{
+			try {
+				modelFacade.getRemoteModel().deleteConsumer(eventData,
+						NetworkResponseHandler.UNREGISTERCONSUMER_HANDLER, view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
 		}
+		break;
+	}
 	}
 
 	// ---------------------------------------------------------------------------------

@@ -56,7 +56,7 @@ public class NetworkAsyncTask extends AsyncTask<HttpParams, String, byte[]> {
 			HttpParams param = params[0];
 			Bundle bundle = param.getRequestParamsBundle();
 			String requestMethod = bundle.getString(HttpParams.REQUEST_METHOD);
-			if (requestMethod.equals(HttpParams.HTTP_GET))
+			if (requestMethod.equals(HttpParams.HTTP_GET) || requestMethod.equals(HttpParams.HTTP_DELETE))
 				responseData = connHandler.makeHttpRequest(param);
 			else {
 				String requestData = bundle.getString(HttpParams.REQUEST_DATA);
