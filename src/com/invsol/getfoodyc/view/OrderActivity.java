@@ -53,8 +53,10 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 
 		View view = getLayoutInflater().inflate(R.layout.item_order_menuitems,
 				newOrder_layout, false);
-		EditText editText_qty = (EditText) view.findViewById(R.id.edittext_item_qty);
-		editText_qty.setText("1");
+		/*EditText editText_qty = (EditText) view.findViewById(R.id.edittext_item_qty);
+		editText_qty.setText("1");*/
+		TextView textview_qty = (TextView) view.findViewById(R.id.textview_item_qty);
+		textview_qty.setText("1");
 		TextView item_name = (TextView) view
 				.findViewById(R.id.textview_item_name);
 		item_name.setText("Paneer Butter Masala");
@@ -65,8 +67,10 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 		
 		View secondview = getLayoutInflater().inflate(R.layout.item_order_menuitems,
 				newOrder_layout, false);
-		EditText editText_qty1 = (EditText) secondview.findViewById(R.id.edittext_item_qty);
-		editText_qty1.setText("5");
+		/*EditText editText_qty1 = (EditText) secondview.findViewById(R.id.edittext_item_qty);
+		editText_qty1.setText("5");*/
+		TextView textview_qty1 = (TextView) view.findViewById(R.id.textview_item_qty);
+		textview_qty1.setText("5");
 		TextView item_name1 = (TextView) secondview
 				.findViewById(R.id.textview_item_name);
 		item_name1.setText("Breads");
@@ -103,39 +107,43 @@ public class OrderActivity extends ActionBarActivity implements ActivityUpdateLi
 			
 			@Override
 			public void onClick(View view) {
-				Bundle eventData = new Bundle();
-				JSONObject postData = new JSONObject();
-				try {
-					postData.put(Constants.JSON_ORDER_TOTAL, Integer.parseInt(item_billamount.getText().toString()));
-					postData.put(Constants.JSON_RESTAURANT_ID, 3);
-					postData.put(Constants.JSON_CONSUMER_ID, 2);
-					if( (null != editText_instructions.getText().toString()) || !(editText_instructions.getText().toString().isEmpty()) )
-						postData.put(Constants.JSON_INSTRUCTIONS, editText_instructions.getText());
-					if( isAddressChecked )
-						postData.put(Constants.JSON_ADDRESS, "Flat-501, Sector-22, Dwarka");
-					else
-						postData.put(Constants.JSON_ADDRESS, edtTxtAddress.getText());
-					Long tsLong = System.currentTimeMillis()/1000;
-					postData.put(Constants.JSON_TIMESTAMP, tsLong);
-					JSONArray orderItemsArray = new JSONArray();
+				if( AppEventsController.getInstance().getModelFacade().getCustomerModel().isCustomerLoggedIn() ){
+					Bundle eventData = new Bundle();
+					JSONObject postData = new JSONObject();
+					try {
+						postData.put(Constants.JSON_ORDER_TOTAL, Integer.parseInt(item_billamount.getText().toString()));
+						postData.put(Constants.JSON_RESTAURANT_ID, 3);
+						postData.put(Constants.JSON_CONSUMER_ID, AppEventsController.getInstance().getModelFacade().getCustomerModel().getCustomer_id());
+						if( (null != editText_instructions.getText().toString()) || !(editText_instructions.getText().toString().isEmpty()) )
+							postData.put(Constants.JSON_INSTRUCTIONS, editText_instructions.getText());
+						if( isAddressChecked )
+							postData.put(Constants.JSON_ADDRESS, "Flat-501, Sector-22, Dwarka");
+						else
+							postData.put(Constants.JSON_ADDRESS, edtTxtAddress.getText());
+						Long tsLong = System.currentTimeMillis()/1000;
+						postData.put(Constants.JSON_TIMESTAMP, tsLong);
+						JSONArray orderItemsArray = new JSONArray();
+						
+						JSONObject tempItemJson = new JSONObject();
+						tempItemJson.put(Constants.JSON_ITEM_ID, 18);
+						tempItemJson.put(Constants.JSON_QUANTITY, 1);
+						orderItemsArray.put(tempItemJson);
+						
+						tempItemJson = null;
+						tempItemJson = new JSONObject();
+						tempItemJson.put(Constants.JSON_ITEM_ID, 20);
+						tempItemJson.put(Constants.JSON_QUANTITY, 5);
+						orderItemsArray.put(tempItemJson);
+						
+						postData.put(Constants.JSON_ORDER_ITEMS, orderItemsArray);
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+					eventData.putString(Constants.JSON_POST_DATA, postData.toString());
+					AppEventsController.getInstance().handleEvent(NetworkEvents.EVENT_ID_PLACEORDER, eventData, edtTxtAddress);
+				}else{
 					
-					JSONObject tempItemJson = new JSONObject();
-					tempItemJson.put(Constants.JSON_ITEM_ID, 18);
-					tempItemJson.put(Constants.JSON_QUANTITY, 1);
-					orderItemsArray.put(tempItemJson);
-					
-					tempItemJson = null;
-					tempItemJson = new JSONObject();
-					tempItemJson.put(Constants.JSON_ITEM_ID, 20);
-					tempItemJson.put(Constants.JSON_QUANTITY, 5);
-					orderItemsArray.put(tempItemJson);
-					
-					postData.put(Constants.JSON_ORDER_ITEMS, orderItemsArray);
-				} catch (JSONException e) {
-					e.printStackTrace();
 				}
-				eventData.putString(Constants.JSON_POST_DATA, postData.toString());
-				AppEventsController.getInstance().handleEvent(NetworkEvents.EVENT_ID_PLACEORDER, eventData, edtTxtAddress);
 			}
 		});
 	}

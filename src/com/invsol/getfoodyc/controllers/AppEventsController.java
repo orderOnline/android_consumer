@@ -128,6 +128,15 @@ public class AppEventsController {
 			}
 		}
 		break;
+		case NetworkEvents.EVENT_ID_SEARCH:{
+			try {
+				modelFacade.getRemoteModel().getRestaurants(eventData,
+						NetworkResponseHandler.SEARCH_RESTAURANTS_HANDLER, view);
+			} catch (Exception ex) {
+				Log.d("Application Exception:", ex.getMessage());
+			}
+		}
+		break;
 	}
 	}
 

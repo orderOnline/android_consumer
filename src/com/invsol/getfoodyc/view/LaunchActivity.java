@@ -17,15 +17,16 @@ import com.invsol.getfoodyc.defines.ResponseTags;
 import com.invsol.getfoodyc.listeners.ActivityUpdateListener;
 import com.invsol.getfoodyc.models.ConnectionModel;
 
-public class LaunchActivity extends ActionBarActivity implements ActivityUpdateListener{
-	
+public class LaunchActivity extends ActionBarActivity implements
+		ActivityUpdateListener {
+
 	private ConnectionModel connModel;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_launch);
-		
+
 		connModel = AppEventsController.getInstance().getModelFacade()
 				.getConnModel();
 		connModel.registerView(this);
@@ -41,10 +42,8 @@ public class LaunchActivity extends ActionBarActivity implements ActivityUpdateL
 
 			@Override
 			public void onClick(View view) {
-				Intent screenChangeIntent = null;
-				screenChangeIntent = new Intent(LaunchActivity.this,
-						HomeActivity.class);
-				LaunchActivity.this.startActivity(screenChangeIntent);
+				AppEventsController.getInstance().handleEvent(
+						NetworkEvents.EVENT_ID_SEARCH, null, view);
 			}
 		});
 
@@ -53,34 +52,36 @@ public class LaunchActivity extends ActionBarActivity implements ActivityUpdateL
 
 			@Override
 			public void onClick(View view) {
+				connModel.unregisterAllView();
 				Intent screenChangeIntent = null;
 				screenChangeIntent = new Intent(LaunchActivity.this,
 						SignupActivity.class);
 				LaunchActivity.this.startActivity(screenChangeIntent);
 			}
 		});
-		
+
 		TextView btn_loginphonenumber = (TextView) findViewById(R.id.textview_login_options_phonenumber);
 		btn_loginphonenumber.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
+				connModel.unregisterAllView();
 				Intent screenChangeIntent = null;
 				screenChangeIntent = new Intent(LaunchActivity.this,
 						LoginActivity.class);
 				LaunchActivity.this.startActivity(screenChangeIntent);
 			}
 		});
-		
+
 		TextView btn_unregister = (TextView) findViewById(R.id.textview_login_options_unregister);
 		btn_unregister.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View view) {
-				AppEventsController.getInstance().getModelFacade().getCustomerModel().setCustomer_id(0);
-				if( AppEventsController.getInstance().getModelFacade().getCustomerModel().getCustomer_id() != -1 ){
+				if (AppEventsController.getInstance().getModelFacade()
+						.getCustomerModel().getCustomer_id() != -1) {
 					AppEventsController.getInstance().handleEvent(
-						NetworkEvents.EVENT_ID_UNREGISTER, null, view);
+							NetworkEvents.EVENT_ID_UNREGISTER, null, view);
 				}
 			}
 		});
@@ -97,32 +98,52 @@ public class LaunchActivity extends ActionBarActivity implements ActivityUpdateL
 			login_layout.setVisibility(View.GONE);
 		}
 	}
-	
+
 	@Override
 	protected void onPause() {
-	  super.onPause();
-	  GetFoodyCustomerApplication.clearReferences();
-	  GetFoodyCustomerApplication.activityPaused();
+		super.onPause();
+		GetFoodyCustomerApplication.clearReferences();
+		GetFoodyCustomerApplication.activityPaused();
 	}
 
 	@Override
 	public void updateActivity(int tag, Bundle data) {
 		switch (tag) {
-		case ResponseTags.TAG_UNREGISTER:
-		{
+		case ResponseTags.TAG_UNREGISTER: {
 			switch (connModel.getConnectionStatus()) {
-			case ConnectionModel.SUCCESS:
-			{
-				Toast alert = Toast.makeText(this, R.string.text_launch_unregistered_success, Toast.LENGTH_SHORT);
+			case ConnectionModel.SUCCESS: {
+				Toast alert = Toast.makeText(this,
+						R.string.text_launch_unregistered_success,
+						Toast.LENGTH_SHORT);
 				alert.show();
 			}
 				break;
-			case ConnectionModel.ERROR:{
-				Toast alert = Toast.makeText(this, R.string.text_launch_unregistered_failure, Toast.LENGTH_SHORT);
+			case ConnectionModel.ERROR: {
+				Toast alert = Toast.makeText(this,
+						R.string.text_launch_unregistered_failure,
+						Toast.LENGTH_SHORT);
 				alert.show();
 			}
-			break;
+				break;
 
+			default:
+				break;
+			}
+		}
+			break;
+		case ResponseTags.TAG_SEARCH_RESTAURANTS: {
+			switch (connModel.getConnectionStatus()) {
+			case ConnectionModel.SUCCESS: {
+				Intent screenChangeIntent = null;
+				screenChangeIntent = new Intent(this,
+						HomeActivity.class);
+				startActivity(screenChangeIntent);
+			}
+				break;
+			case ConnectionModel.ERROR: {
+
+			}
+				break;
 			default:
 				break;
 			}

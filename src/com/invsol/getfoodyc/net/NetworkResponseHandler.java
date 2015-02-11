@@ -1,5 +1,6 @@
 package com.invsol.getfoodyc.net;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,6 +24,7 @@ public class NetworkResponseHandler {
 	public static final Handler REGISTERUSER_VALIDATEOTP_HANDLER = registerUserValidateOTPHandler();
 	public static final Handler LOGINUSER_HANDLER = loginUserHandler();
 	public static final Handler UNREGISTERCONSUMER_HANDLER = unregisterConsumerHandler();
+	public static final Handler SEARCH_RESTAURANTS_HANDLER = searchRestaurantsHandler();
 
 	private static Handler placeOrderHandler() {
 		return new Handler() {
@@ -65,6 +67,55 @@ public class NetworkResponseHandler {
 		};
 	}
 	
+	private static Handler searchRestaurantsHandler() {
+		return new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				ConnectionModel model = AppEventsController.getInstance()
+						.getModelFacade().getConnModel();
+				switch (msg.what) {
+				case Constants.SUCCESSFUL_RESPONSE: {
+					Log.d("response==", ((JSONObject) msg.obj).toString());
+					try {
+						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
+						String type = resp.getString(Constants.JSON_TYPE);
+						if( type.equals(Constants.JSON_SUCCESS)){
+							JSONArray restaurantsArray = resp.getJSONArray(Constants.JSON_RESPONSE);
+							if( restaurantsArray.length() > 0 ){
+								AppEventsController.getInstance().getModelFacade().getRestaurantsModel().setRestaurantsData(restaurantsArray);
+								model.setConnectionStatus(ConnectionModel.SUCCESS);
+								model.notifyView(ResponseTags.TAG_SEARCH_RESTAURANTS, null);
+							}else{
+								Bundle dataBundle = new Bundle();
+								dataBundle.putString(Constants.JSON_ERROR_MESSAGE, "No data found.");
+								model.setConnectionStatus(ConnectionModel.ERROR);
+								model.notifyView(ResponseTags.TAG_SEARCH_RESTAURANTS, dataBundle);
+							}
+						}else{
+							model.setConnectionStatus(ConnectionModel.ERROR);
+							model.notifyView(ResponseTags.TAG_SEARCH_RESTAURANTS, null);
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
+				}
+					break;
+				case Constants.EXCEPTION: {
+					Exception exceptionObj = (Exception) msg.obj;
+					Log.d(TAG, "exception:" + exceptionObj.getMessage());
+					Bundle dataBundle = new Bundle();
+					dataBundle.putString(Constants.JSON_ERROR_MESSAGE, exceptionObj.getMessage());
+					model.setConnectionStatus(ConnectionModel.ERROR);
+					model.setConnectionErrorMessage(exceptionObj.getMessage());
+					model.notifyView(ResponseTags.TAG_ERROR, dataBundle);
+				}
+					break;
+				}
+			}
+
+		};
+	}
+
 	private static Handler unregisterConsumerHandler() {
 		return new Handler() {
 			@Override
@@ -120,7 +171,7 @@ public class NetworkResponseHandler {
 					try {
 						JSONObject resp = ((JSONObject) msg.obj).getJSONObject(Constants.JSON_RESULT);
 						JSONObject restData = (JSONObject)resp.getJSONObject(Constants.JSON_RESPONSE);
-						String type = restData.getString(Constants.JSON_TYPE);
+						String type = resp.getString(Constants.JSON_TYPE);
 						if( type.equals(Constants.JSON_SUCCESS)){
 							customerModel.setPhonenumber(restData.getLong(Constants.JSON_PHONENUMBER));
 							customerModel.setCustomer_id(restData.getInt(Constants.JSON_CONSUMER_ID));

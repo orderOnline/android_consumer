@@ -11,6 +11,7 @@ public class ModelFacade {
 	private CustomerModel customerModel;
 	private OrdersModel orderModel;
 	private ChatModel chatModel;
+	private RestaurantsModel restaurantsModel;
 	// ---------------------------------------------------------------------------------
 
 	/**
@@ -24,6 +25,7 @@ public class ModelFacade {
 		customerModel = new CustomerModel();
 		orderModel = new OrdersModel();
 		chatModel = new ChatModel();
+		restaurantsModel = new RestaurantsModel();
 	}
 
 	// ---------------------------------------------------------------------------------
@@ -55,6 +57,10 @@ public class ModelFacade {
 
 	public ChatModel getChatModel() {
 		return chatModel;
+	}
+
+	public RestaurantsModel getRestaurantsModel() {
+		return restaurantsModel;
 	}
 
 	

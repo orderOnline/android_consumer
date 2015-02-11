@@ -82,7 +82,7 @@ public class ConnectivityHandler {
 			});*/
 
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setReadTimeout(10000 /* milliseconds */);
+			conn.setReadTimeout(15000 /* milliseconds */);
 			conn.setConnectTimeout(15000 /* milliseconds */);
 			conn.setRequestMethod(requestMethod);
 			conn.setDoInput(true);

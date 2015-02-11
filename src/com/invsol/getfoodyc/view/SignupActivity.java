@@ -42,6 +42,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 	private EditText editText_phoneno, editText_password;
 	private boolean isPhoneNumberValid, isPasswordValid;
 	private BroadcastReceiver smsReceiver;
+	private IntentFilter smsIntentFilter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -157,7 +158,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 			}
 		});
 		
-		IntentFilter intentFilter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
+		smsIntentFilter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
 		
 		smsReceiver = new BroadcastReceiver() {
 			 
@@ -193,7 +194,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 			}
 		};
 		//registering our receiver
-		this.registerReceiver(smsReceiver, intentFilter);
+		this.registerReceiver(smsReceiver, smsIntentFilter);
 	}
 
 	@Override
@@ -294,6 +295,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 	@Override
 	protected void onResume() {
 	  super.onResume();
+	  this.registerReceiver(smsReceiver, smsIntentFilter);
 	  GetFoodyCustomerApplication.setCurrentActivity(this);
 	  GetFoodyCustomerApplication.activityResumed();
 	}
@@ -301,7 +303,7 @@ public class SignupActivity extends ActionBarActivity implements ActivityUpdateL
 	@Override
 	protected void onPause() {
 	  super.onPause();
-	  //this.unregisterReceiver(smsReceiver);
+	  this.unregisterReceiver(smsReceiver);
 	  GetFoodyCustomerApplication.clearReferences();
 	  GetFoodyCustomerApplication.activityPaused();
 	}

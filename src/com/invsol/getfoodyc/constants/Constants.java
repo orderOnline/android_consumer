@@ -11,6 +11,7 @@ public class Constants {
 		public static final String URL_POST_NEW_ORDER = "orders/new.json";
 		public static final String URL_POST_CHAT = "orders/new.json";
 		public static final String URL_DELETE_CONSUMER = "profile/consumer/";
+		public static final String URL_GET_RESTAURANTS = "search/restaurants/all.json";
 		// ----------------------------------------------------------------------------------
 		
 		/**
@@ -69,6 +70,8 @@ public class Constants {
 		public static final String JSON_CITY = "city";
 		public static final String JSON_STATE = "state";
 		public static final String JSON_ZIPCODE = "zipcode";
+		public static final String JSON_SERVICE_START_TIME = "service_start_time";
+		public static final String JSON_SERVICE_END_TIME = "service_end_time";
 		// ----------------------------------------------------------------------------------
 		
 		public static final String KEY_ORDER_CONFIRMATION = "orderconfirmation";
